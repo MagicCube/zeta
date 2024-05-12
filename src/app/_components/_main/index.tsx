@@ -2,7 +2,7 @@
 
 import Textarea from '@mui/joy/Textarea';
 
-import { useVisualViewport } from '../../hooks/use-visual-viewport';
+import { useVisualViewport } from '../../hooks';
 import Lorem from '../lorem';
 
 import styles from './index.module.css';
