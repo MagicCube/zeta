@@ -15,11 +15,7 @@ export function useVisualViewport(): {
       setInteractable(true);
     }, 0);
   }, []);
-  const handleResize = useCallback(() => {
-    const height = window.visualViewport?.height;
-    if (height) {
-      setHeight(height);
-    }
+  const handleTargetFocus = useCallback(() => {
     if (scrollableRef.current) {
       const scrollable = scrollableRef.current;
       setTimeout(() => {
@@ -27,7 +23,13 @@ export function useVisualViewport(): {
           top: scrollable.scrollHeight - scrollable.clientHeight,
           behavior: 'smooth',
         });
-      }, 0);
+      }, 100);
+    }
+  }, []);
+  const handleResize = useCallback(() => {
+    const height = window.visualViewport?.height;
+    if (height) {
+      setHeight(height);
     }
   }, []);
   useEffect(() => {
@@ -48,6 +50,7 @@ export function useVisualViewport(): {
         top: interactable ? undefined : -window.innerHeight,
         position: interactable ? undefined : 'fixed',
       },
+      onFocus: handleTargetFocus,
       onMouseDown: handleTargetMouseDown,
     },
   };
