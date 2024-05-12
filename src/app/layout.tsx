@@ -14,9 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <title>Zeta</title>
-      </head>
+      <head></head>
       <body>
         <CssVarsProvider defaultMode="dark" theme={theme}>
           <CssBaseline />
