@@ -8,11 +8,11 @@ import Lorem from '../lorem';
 import styles from './index.module.css';
 
 export default function Main() {
-  const { containerProps, targetProps } = useVisualViewport();
+  const { scrollableRef, containerProps, targetProps } = useVisualViewport();
   return (
     <div className={styles.container} {...containerProps}>
       <header className={styles.header}>Zeta</header>
-      <main className={styles.main}>
+      <main ref={scrollableRef} className={styles.main}>
         <Lorem />
       </main>
       <footer className={styles.footer} {...targetProps}>

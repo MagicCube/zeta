@@ -1,10 +1,12 @@
 import type React from 'react';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 
 export function useVisualViewport(): {
+  scrollableRef: React.MutableRefObject<HTMLElement | null>;
   containerProps: Pick<React.HTMLAttributes<HTMLElement>, 'style'>;
   targetProps: Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'onMouseDown'>;
 } {
+  const scrollableRef = useRef<HTMLElement | null>(null);
   const [interactable, setInteractable] = useState(true);
   const [height, setHeight] = useState(window.visualViewport?.height);
   const handleTargetMouseDown = useCallback(() => {
@@ -18,6 +20,15 @@ export function useVisualViewport(): {
     if (height) {
       setHeight(height);
     }
+    if (scrollableRef.current) {
+      const scrollable = scrollableRef.current;
+      setTimeout(() => {
+        scrollable.scrollTo({
+          top: scrollable.scrollHeight - scrollable.clientHeight,
+          behavior: 'smooth',
+        });
+      }, 0);
+    }
   }, []);
   useEffect(() => {
     window.visualViewport?.addEventListener('resize', handleResize);
@@ -26,6 +37,7 @@ export function useVisualViewport(): {
     };
   }, [handleResize]);
   return {
+    scrollableRef,
     containerProps: {
       style: {
         height,
