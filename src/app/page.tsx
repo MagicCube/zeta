@@ -1,25 +1,19 @@
-import { Button } from '@mui/joy';
+import Main from './_components/_main';
 
-import styles from './styles/page.module.css';
+export const metadata = {
+  appleWebApp: {
+    appCapable: 'yes',
+    statusBarStyle: 'black-translucent',
+  },
+};
 
-export default function Page() {
-  return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h3>Welcome to Zeta</h3>
-      </header>
-      <main className={styles.main}>
-        <p>
-          Zeta is a personal assistant capable of answering any question using
-          LLM and built-in tools.
-        </p>
-        <p>We are now now in private Beta. Please sign in to get started.</p>
-      </main>
-      <footer className={styles.footer}>
-        <Button component="a" fullWidth size="lg" href="/api/auth/signin">
-          Sign in
-        </Button>
-      </footer>
-    </div>
-  );
+export const viewport = {
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  width: 'device-width',
+};
+
+export default async function Page() {
+  return <Main />;
 }
