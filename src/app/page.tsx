@@ -1,19 +1,9 @@
-import Main from './_components/_main';
+import dynamic from 'next/dynamic';
 
-export const metadata = {
-  appleWebApp: {
-    appCapable: 'yes',
-    statusBarStyle: 'black-translucent',
-  },
-};
+const DynamicMain = dynamic(() => import('./_components/_main'), {
+  ssr: false,
+});
 
-export const viewport = {
-  initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1,
-  width: 'device-width',
-};
-
-export default async function Page() {
-  return <Main />;
+export default function Page() {
+  return <DynamicMain />;
 }
