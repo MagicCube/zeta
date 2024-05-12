@@ -1,4 +1,4 @@
-import { Button } from '@mui/joy';
+import Button from '@mui/joy/Button';
 
 import styles from './index.module.css';
 
