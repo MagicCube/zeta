@@ -66,6 +66,10 @@ const config = {
             pattern: './**.css',
             group: 'object',
           },
+          {
+            pattern: './**.md',
+            group: 'object',
+          },
         ],
         'newlines-between': 'always',
         alphabetize: {
