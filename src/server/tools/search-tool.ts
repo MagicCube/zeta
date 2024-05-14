@@ -1,22 +1,20 @@
-import { getJson } from 'serpapi';
-
 import { type Tool } from '~/shared/tools';
 
-export class SearchTool implements Tool<Record<string, unknown>> {
+import { type SERPSearchResult, serpSearch } from '../search/serp';
+
+export class SearchTool implements Tool<SERPSearchResult> {
   readonly name = 'search';
 
   async run(params: string[]) {
-    const result = await getJson({
-      google_domain: 'google.com',
-      api_key: process.env.SERP_API_KEY,
-      q: params[0],
-      location: 'Beijing, China',
-      hl: 'zh-cn',
-      gl: 'cn',
+    const result = await serpSearch({
+      q: params[0]!,
+      country: 'cn',
+      location: 'Beijing, Beijing, China',
+      locale: 'zh-cn',
     });
     return {
-      response: result,
       content: JSON.stringify(result, null, 2),
+      response: result,
     };
   }
 }

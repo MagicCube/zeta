@@ -1,0 +1,318 @@
+{
+  "search_metadata": {
+    "id": "664350075c5606210e931000",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/501200aacf2e50f4/664350075c5606210e931000.json",
+    "created_at": "2024-05-14 11:50:31 UTC",
+    "processed_at": "2024-05-14 11:50:31 UTC",
+    "google_url": "https://www.google.com/search?q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&oq=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&uule=w+CAIQICINQmVpamluZyxDaGluYQ&hl=zh-cn&gl=cn&sourceid=chrome&ie=UTF-8",
+    "raw_html_file": "https://serpapi.com/searches/501200aacf2e50f4/664350075c5606210e931000.html",
+    "total_time_taken": 1.99
+  },
+  "search_parameters": {
+    "engine": "google",
+    "q": "幕府将军 评价",
+    "location_requested": "Beijing, China",
+    "location_used": "Beijing,China",
+    "google_domain": "google.com",
+    "hl": "zh-cn",
+    "gl": "cn",
+    "device": "desktop"
+  },
+  "search_information": {
+    "query_displayed": "幕府将军 评价",
+    "total_results": 727000,
+    "time_taken_displayed": 0.47,
+    "organic_results_state": "Results for exact spelling"
+  },
+  "knowledge_graph": {
+    "title": "幕府将军",
+    "type": "2024 年 ‧ 剧情片 ‧ 1 季",
+    "entity_type": "tv, tvm",
+    "main_tab_text": "概览",
+    "kgmid": "/g/11f7r5ydnl",
+    "knowledge_graph_search_link": "https://www.google.com/search?kgmid=/g/11f7r5ydnl&hl=zh-Hans-CN&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B&kgs=c200263b87dbdf5a&shndl=17&source=sh/x/kp/osrp/m5/1",
+    "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-Hans-CN&kgmid=%2Fg%2F11f7r5ydnl&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B",
+    "tabs": [
+      {
+        "text": "演员表",
+        "si": "ACC90nweTWdTkbragOqbtxY3ldzQi8mxG5JZh8JtFNr-pC1ekTN0fOK9dMgZiJb3-2Vjr-w2948uY95six7qe6YW82F31O6hxg2fRVvRnyJwsXmbB9DNUJz5RdvwNMhQ_dDIHp6PlYkfznbFU4a8HXsFd3FZipQnlQ==",
+        "link": "https://www.google.com/search?si=ACC90nweTWdTkbragOqbtxY3ldzQi8mxG5JZh8JtFNr-pC1ekTN0fOK9dMgZiJb3-2Vjr-w2948uY95six7qe6YW82F31O6hxg2fRVvRnyJwsXmbB9DNUJz5RdvwNMhQ_dDIHp6PlYkfznbFU4a8HXsFd3FZipQnlQ%3D%3D&hl=zh-Hans-CN&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E6%BC%94%E5%91%98%E9%98%B5%E5%AE%B9&kgs=c200263b87dbdf5a&shndl=17&source=sh/x/kp/osrp/m5/1",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-Hans-CN&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E6%BC%94%E5%91%98%E9%98%B5%E5%AE%B9&si=ACC90nweTWdTkbragOqbtxY3ldzQi8mxG5JZh8JtFNr-pC1ekTN0fOK9dMgZiJb3-2Vjr-w2948uY95six7qe6YW82F31O6hxg2fRVvRnyJwsXmbB9DNUJz5RdvwNMhQ_dDIHp6PlYkfznbFU4a8HXsFd3FZipQnlQ%3D%3D"
+      },
+      {
+        "text": "评价",
+        "link": "https://www.google.com/search?stick=H4sIAAAAAAAAAOMwe8R4nplb4OWPe8JSR5knrTl5jXEfMxdfQFF-VmpySVBqWWZqebGQIReba15JZkmlkKAUPxevfrq-oWGaeZFpZUpejpEIVCCroDC-ONswT2Dt2emMUj-YuL4ycbG9WN_yZPd2UQaGBnsJJi2mqgwjDg4mAUYJXgU2q6tMGSUlBcVW-vqZeSWpeSW6OYlJesn5RQV66fn56TmpQHaufmFpalFmarF9eX5RdnFBYnKqrUdqYopaSWK6bWZeSmlySWZ-nlppcWp8fk5KfHFqYlFyhm1JUWmqWk5iXrptVYZaZootRFjV2NEs1TDJyCQx1dDAxMzE3MwURTItMc3QBChvapZiYQqyA1kyNcUszSLRwDDZxCAt2TwNVTLFxDwZ6DJzE_MUQ0tzUxNUybRkYwszo0RLc4skoxTTRBTJJEOjFDODNAsT42RL47TEJFSdqWkGpobmQMLUzMIsyVgNFDalxbb6EBVqaZk5JalFqSnxqOI8i1iln7ZufrKr7-nOqU93zXm6oe1p2-zns1ogcQEAaLu5-PMBAAA&hl=zh-Hans-CN&q=%E5%85%B3%E4%BA%8E%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E7%9A%84%E8%AF%84%E4%BB%B7&kgs=c200263b87dbdf5a&shndl=17&source=sh/x/kp/osrp/m5/1",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-Hans-CN&location=Beijing%2C+China&q=%E5%85%B3%E4%BA%8E%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E7%9A%84%E8%AF%84%E4%BB%B7&stick=H4sIAAAAAAAAAOMwe8R4nplb4OWPe8JSR5knrTl5jXEfMxdfQFF-VmpySVBqWWZqebGQIReba15JZkmlkKAUPxevfrq-oWGaeZFpZUpejpEIVCCroDC-ONswT2Dt2emMUj-YuL4ycbG9WN_yZPd2UQaGBnsJJi2mqgwjDg4mAUYJXgU2q6tMGSUlBcVW-vqZeSWpeSW6OYlJesn5RQV66fn56TmpQHaufmFpalFmarF9eX5RdnFBYnKqrUdqYopaSWK6bWZeSmlySWZ-nlppcWp8fk5KfHFqYlFyhm1JUWmqWk5iXrptVYZaZootRFjV2NEs1TDJyCQx1dDAxMzE3MwURTItMc3QBChvapZiYQqyA1kyNcUszSLRwDDZxCAt2TwNVTLFxDwZ6DJzE_MUQ0tzUxNUybRkYwszo0RLc4skoxTTRBTJJEOjFDODNAsT42RL47TEJFSdqWkGpobmQMLUzMIsyVgNFDalxbb6EBVqaZk5JalFqSnxqOI8i1iln7ZufrKr7-nOqU93zXm6oe1p2-zns1ogcQEAaLu5-PMBAAA"
+      }
+    ],
+    "description": "《幕府将军》是一部美国剧情类迷你剧集，为根据詹姆斯·克莱维尔1975年发表的同名小说第二度改编作品，于2024年2月于FX和Hulu首播，并将在海外地区的Disney+中的“Star”版块中同步上线，全10集。",
+    "source": {
+      "name": "维基百科",
+      "link": "https://zh.wikipedia.org/zh-cn/%E5%B9%95%E5%BA%9C%E5%B0%87%E8%BB%8D_(2024%E5%B9%B4%E9%9B%BB%E8%A6%96%E5%8A%87)"
+    },
+    "剧集数": "10",
+    "开播时间": "2024 年 2 月 27 日 (美国)",
+    "开播时间_links": [
+      {
+        "text": "美国",
+        "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E7%BE%8E%E5%9B%BD&si=ACC90nzx_D3_zUKRnpAjmO0UBLNxnt7EyN4YYdru6U3bxLI-LznvfIIlztyZHX4cufrpOKcdWjK0eldVvR2QD9fuC16FQ53BxG24R_l6X40Sq4MutWrSUhnvdFlSn96V-FjsnGyextdoXHwz3HDtrSBAb5Z0KwyEJ4UTx67RcsKX-p3P847IfXxj_EPUgxvj6sNk2R7E686y&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QmxMoAHoECBoQAg"
+      }
+    ],
+    "改编自": "幕府將軍",
+    "改编自_links": [
+      {
+        "text": "幕府將軍",
+        "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%87%E8%BB%8D+%E8%A9%B9%E5%A7%86%E5%A3%AB%C2%B7%E5%8D%A1%E8%8E%B1%E7%BB%B4&si=ACC90nzx_D3_zUKRnpAjmO0UBLNxnt7EyN4YYdru6U3bxLI-LzRMvxpkolpeLvucQu7iR82-Ab7RzOwllhXGYZfpeeiS6a4zknNQZUK_0QZyvxkP2ZpfCRcPBQUxE-ng01aQOnHlZUoPvKBVCI14GriN_Qgm3cPIRRCKsKpjKQ4mBS4HXKltbq_ckIMOpioSClhZdHJ-pPsckjsmIpb2kJZL0yforArm_KgfX-a3JtInrXB34aXZd_w%3D&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QmxMoAHoECBgQAg"
+      }
+    ],
+    "制作人": "汤姆·温彻斯特真田广之",
+    "制作公司": "DNA Films（英语 - DNA Films）; FX",
+    "制作公司_links": [
+      {
+        "text": "FX",
+        "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=FX&stick=H4sIAAAAAAAAAONgVuLWT9c3NDI2NK7Ijl_EyuQWAQBlw1DyFAAAAA&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QmxMoAHoECBYQAg"
+      }
+    ],
+    "原作": "《幕府将军（英语 - Shōgun (novel)）》; 詹姆斯·克莱维尔（英语 - James Clavell）作品",
+    "user_statistics": {
+      "platform": "Google 用户",
+      "statistic": "95% 的用户赞了这个电视节目"
+    },
+    "用户还搜索了": [
+      {
+        "name": "关于The Sympathizer的评价 (自 2024 年)",
+        "extensions": ["自 2024 年"],
+        "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&si=ACC90nzLl5c4QduTWiSVaL-3Kzx6U1h-g8yZpcQDGfyDn5Y4p9gjy_LCkuacM-hRWUPXB1jNVFhCkcF5TOlTCbnznMOfWzKnceYIC1czlf3j1tu1FktKORN9WqwniTzKTKB997zvqPLtzkaeQI3QD0n6Agn-_beTvFpVUFLo2oyqP4L3D0Csyz3RjjpP7er45vJcsMvIAOv9PINu9K4oTBcdr97IfbYkjuXbUnem2RexbQrCX6tn9QTFHG2PwNaenfkdyLTY1uIQ&q=%E5%85%B3%E4%BA%8EThe+Sympathizer%E7%9A%84%E8%AF%84%E4%BB%B7&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Qs9oBKAB6BAgXEAI",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%85%B3%E4%BA%8EThe+Sympathizer%E7%9A%84%E8%AF%84%E4%BB%B7&si=ACC90nzLl5c4QduTWiSVaL-3Kzx6U1h-g8yZpcQDGfyDn5Y4p9gjy_LCkuacM-hRWUPXB1jNVFhCkcF5TOlTCbnznMOfWzKnceYIC1czlf3j1tu1FktKORN9WqwniTzKTKB997zvqPLtzkaeQI3QD0n6Agn-_beTvFpVUFLo2oyqP4L3D0Csyz3RjjpP7er45vJcsMvIAOv9PINu9K4oTBcdr97IfbYkjuXbUnem2RexbQrCX6tn9QTFHG2PwNaenfkdyLTY1uIQ",
+        "image": "https://serpapi.com/searches/664350075c5606210e931000/images/cbf57a1304be4b3ed2cc81f9b0447b92dec2907aa9ef5c2660d6b44b17ca0ea8f4c572ce28bac3012c67c5996961c0a3.jpeg"
+      },
+      {
+        "name": "关于忍者之家的评价 (自 2024 年)",
+        "extensions": ["自 2024 年"],
+        "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&si=ACC90nzLl5c4QduTWiSVaL-3Kzx6U1h-g8yZpcQDGfyDn5Y4p3ds_wK8mC2xo7BJND48ImU2Ks-Mz4eQPbIwnX7RV5iTCe74EsoqAbxZG-pykvkuIz6he5xvwiq1vGmOCSrU14SbI-yig5_IiI1tHC3CxvREr56Mfi9KCCtv-RehkyIt9EuCZxvuUzwrobUy-SdJJlYvsMbW4hpbcH3-9e1znDLcH2spFiekYWCH7Y0qvJxxokX31Io%3D&q=%E5%85%B3%E4%BA%8E%E5%BF%8D%E8%80%85%E4%B9%8B%E5%AE%B6%E7%9A%84%E8%AF%84%E4%BB%B7&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Qs9oBKAF6BAgXEAM",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%85%B3%E4%BA%8E%E5%BF%8D%E8%80%85%E4%B9%8B%E5%AE%B6%E7%9A%84%E8%AF%84%E4%BB%B7&si=ACC90nzLl5c4QduTWiSVaL-3Kzx6U1h-g8yZpcQDGfyDn5Y4p3ds_wK8mC2xo7BJND48ImU2Ks-Mz4eQPbIwnX7RV5iTCe74EsoqAbxZG-pykvkuIz6he5xvwiq1vGmOCSrU14SbI-yig5_IiI1tHC3CxvREr56Mfi9KCCtv-RehkyIt9EuCZxvuUzwrobUy-SdJJlYvsMbW4hpbcH3-9e1znDLcH2spFiekYWCH7Y0qvJxxokX31Io%3D",
+        "image": "https://serpapi.com/searches/664350075c5606210e931000/images/cbf57a1304be4b3ed2cc81f9b0447b92dec2907aa9ef5c2660d6b44b17ca0ea8a38b2cd70113b668abca6decd0565b8b.jpeg"
+      },
+      {
+        "name": "关于Monsieur Spade的评价 (2024 年)",
+        "extensions": ["2024 年"],
+        "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&si=ACC90nzLl5c4QduTWiSVaL-3Kzx6U1h-g8yZpcQDGfyDn5Y4p_3snmsazTsId5-QKEr20U7XEZPwlspKUTYW3_t4xvVxXkVmKKvk7gSVKDpt9UW1r45LsbXq1jofg6kMCJWDU303_t5QQwj0qfAkt3kvWH1PY9GBLSUliJ1cxKhKQg99ExLbm339rnFqPWWN_uVWYtx9MJ-im68dKEZbitI1nApfgc5xI7ZH2mcH9ZMtaYzZpTQHog9959WeaVnYKOqk1A1C3ZTZ&q=%E5%85%B3%E4%BA%8EMonsieur+Spade%E7%9A%84%E8%AF%84%E4%BB%B7&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Qs9oBKAJ6BAgXEAQ",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%85%B3%E4%BA%8EMonsieur+Spade%E7%9A%84%E8%AF%84%E4%BB%B7&si=ACC90nzLl5c4QduTWiSVaL-3Kzx6U1h-g8yZpcQDGfyDn5Y4p_3snmsazTsId5-QKEr20U7XEZPwlspKUTYW3_t4xvVxXkVmKKvk7gSVKDpt9UW1r45LsbXq1jofg6kMCJWDU303_t5QQwj0qfAkt3kvWH1PY9GBLSUliJ1cxKhKQg99ExLbm339rnFqPWWN_uVWYtx9MJ-im68dKEZbitI1nApfgc5xI7ZH2mcH9ZMtaYzZpTQHog9959WeaVnYKOqk1A1C3ZTZ",
+        "image": "https://serpapi.com/searches/664350075c5606210e931000/images/cbf57a1304be4b3ed2cc81f9b0447b92dec2907aa9ef5c2660d6b44b17ca0ea85a65fd95c390d20728f0d91414965cf3.jpeg"
+      }
+    ]
+  },
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "如何评价由詹姆斯克拉维尔同名小说改编的美剧《幕府将军》？",
+      "link": "https://www.zhihu.com/question/646110210",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.zhihu.com/question/646110210&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECEAQAQ",
+      "displayed_link": "https://www.zhihu.com › question",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea43fbd40d4d6a389e1913bee6006d979b56.png",
+      "date": "2024年2月27日",
+      "snippet": "故事线主要为两条，一条是伊拉斯莫号航船上的领航员（Pilot）John和一行人奢望抵达日本——葡萄牙人的生金宝藏之地。但五艘航船最终仅剩一艘，外加水竭粮绝 ...",
+      "sitelinks": {
+        "list": [
+          {
+            "title": "《幕府将军》烂番茄开局100% ，该剧有哪些看点？ - 知乎",
+            "link": "https://www.zhihu.com/question/646125673/answer/3422799111",
+            "date": "2024年3月8日"
+          },
+          {
+            "title": "如何评价詹姆斯.克拉维尔的《幕府将军》？ - 高品影视的回答",
+            "link": "https://www.zhihu.com/question/446189787/answer/3412052399",
+            "date": "2021年2月24日"
+          },
+          {
+            "title": "如何评价《幕府将军》第10集？ - 知乎用户的回答",
+            "link": "https://www.zhihu.com/question/653884649/answer/3476229811",
+            "date": "2024年4月23日"
+          },
+          {
+            "title": "如何评价游戏《幕府将军2全面战争》？ - 知乎",
+            "link": "https://www.zhihu.com/question/300903302",
+            "date": "2018年11月1日"
+          }
+        ]
+      },
+      "source": "知乎"
+    },
+    {
+      "position": 2,
+      "title": "幕府将军第一季- 电视剧",
+      "link": "https://m.douban.com/movie/subject/30291334/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://m.douban.com/movie/subject/30291334/&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECCwQAQ",
+      "displayed_link": "https://m.douban.com › movie › subject",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea43f65fa9954c017e6bb8f947a26f630dd3.png",
+      "snippet": "幕府将军第一季豆瓣评分：7.9 简介：该剧根据1975年James Clavell的同名畅销小说改编。故事背景为1600年的日本，当时正值一场世纪内战的黎明，即关原合战。",
+      "snippet_highlighted_words": ["幕府将军"],
+      "source": "Douban"
+    },
+    {
+      "position": 3,
+      "title": "小岛秀夫高度评价新剧《幕府将军》：堪比《权游》！",
+      "link": "https://www.163.com/dy/article/ISM94O680526K1KN.html",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.163.com/dy/article/ISM94O680526K1KN.html&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECEQQAQ",
+      "displayed_link": "https://www.163.com › article",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea439a7b30bd7a9a2e57d7873054a78245e1.png",
+      "date": "2024年3月8日",
+      "snippet": "“42年前令我们为之疯狂的'幕府将军''按针先生'再次归来，本剧的规模、细节、演员、服装、布景、道具和视觉特效都堪称一流，毫不夸张地说，这是一部以17 ...",
+      "snippet_highlighted_words": ["幕府将军"],
+      "source": "网易首页"
+    },
+    {
+      "position": 4,
+      "title": "幕府将军- 全部影评",
+      "link": "https://m.douban.com/movie/subject/30291334/reviews",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://m.douban.com/movie/subject/30291334/reviews&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECDAQAQ",
+      "displayed_link": "https://m.douban.com › movie › subject › reviews",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea435a336ea79ae07de49955dea00eea5c29.png",
+      "snippet": "《幕府将军》保持一周一集的速度，大众口碑和专业评论持续给予了相当高的评价。 周二上线的第九集《绯红天空》则在此基础上有了进一步的提升，达到了目前的巅峰，精彩 ...",
+      "snippet_highlighted_words": ["幕府将军", "评价"],
+      "source": "Douban"
+    },
+    {
+      "position": 5,
+      "title": "我感慨，日本历史竟被美剧拍得如此好看？|丰臣秀吉|幕府将军",
+      "link": "https://www.163.com/dy/article/ISABDN9B0517GLMC.html",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.163.com/dy/article/ISABDN9B0517GLMC.html&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECC8QAQ",
+      "displayed_link": "https://www.163.com › article",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea438f74c1282edb5de550190251f42e896a.png",
+      "date": "2024年3月2日",
+      "snippet": "但为什么，剧集的口碑评价还这么高？ 《幕府将军》为什么一播口碑就爆？一个词，正。 首先，是历史质感正。 剧中的服化道非常考究，从大阪城. 打开网易 ...",
+      "snippet_highlighted_words": ["评价", "幕府将军"],
+      "source": "网易"
+    },
+    {
+      "position": 6,
+      "title": "小岛秀夫高度评价新剧《幕府将军》：堪比《权游》！",
+      "link": "https://www.gamersky.com/news/202403/1716655.shtml",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.gamersky.com/news/202403/1716655.shtml&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECDIQAQ",
+      "displayed_link": "https://www.gamersky.com › news",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea431933e06197fbd692fabeb24e177415ef.png",
+      "date": "2024年3月7日",
+      "snippet": "“42年前令我们为之疯狂的'幕府将军''按针先生'再次归来，本剧的规模、细节、演员、服装、布景、道具和视觉特效都堪称一流，毫不夸张地说，这是一部以17 ...",
+      "snippet_highlighted_words": ["幕府将军"],
+      "source": "游民星空"
+    },
+    {
+      "position": 7,
+      "title": "日本人怎么看待幕府将军？ 178",
+      "link": "https://nga.178.com/read.php?tid=39659006",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://nga.178.com/read.php%3Ftid%3D39659006&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECEYQAQ",
+      "displayed_link": "https://nga.178.com › read",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea436053eebbb08c0dc8b15cc14cab68baf5.png",
+      "date": "2024年3月24日",
+      "snippet": "... 幕府将军可能皮做的好一点，不像长城搞了一坨，表面展示的日本文化还是OK 挺好奇日本人怎么看待这部剧，怎么评价它 你说的这个白皮历史上确实存在过 ...",
+      "snippet_highlighted_words": ["幕府将军", "评价"],
+      "source": "178游戏"
+    },
+    {
+      "position": 8,
+      "title": "如何评价美剧《幕府将军》？ : r/China_irl",
+      "link": "https://www.reddit.com/r/China_irl/comments/1byt8w1/%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7%E7%BE%8E%E5%89%A7%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.reddit.com/r/China_irl/comments/1byt8w1/%25E5%25A6%2582%25E4%25BD%2595%25E8%25AF%2584%25E4%25BB%25B7%25E7%25BE%258E%25E5%2589%25A7%25E5%25B9%2595%25E5%25BA%259C%25E5%25B0%2586%25E5%2586%259B/&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECEsQAQ",
+      "displayed_link": "https://www.reddit.com › China_irl › comments › 如何...",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea436544dd51b0c6297e7986301b59990b72.png",
+      "date": "2024年4月8日",
+      "snippet": "拍的不错，我这几天也是有兴趣去翻了下原著小说。发现小说它整个时间线都是在关原合战（平行世界的）之前的一段时间，时间跨度大概在半年多一点点。",
+      "source": "Reddit"
+    },
+    {
+      "position": 9,
+      "title": "史詩鉅作《幕府將軍》7大必看亮點！獲外媒一致好評",
+      "link": "https://www.vogue.com.tw/article/sh%C5%8Dgun-disney",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.vogue.com.tw/article/sh%25C5%258Dgun-disney&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECDEQAQ",
+      "displayed_link": "https://www.vogue.com.tw › ... › Disney+",
+      "favicon": "https://serpapi.com/searches/664350075c5606210e931000/images/8bd249b058d32a4de7ba5897b984ea4347617548983b2473661dc9461a04c9f9.png",
+      "date": "2024年4月25日",
+      "snippet": "此部影集首波評價也不負眾望，在外國知名影評網站爛番茄獲得100% 滿分新鮮度，國外影評人也一致好評！ 《時代雜誌》影評：「這是一個關於戰爭、愛情、信仰 ...",
+      "snippet_highlighted_words": ["評價"],
+      "source": "Vogue Taiwan"
+    },
+    {
+      "position": 10,
+      "title": "持续刷到幕府将军的高评价，百思不得其解的... 来自鸾爷",
+      "link": "https://weibo.com/1876246981/O7KN0xd30",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://weibo.com/1876246981/O7KN0xd30&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8QFnoECC4QAQ",
+      "displayed_link": "https://weibo.com › ...",
+      "date": "2024年4月1日",
+      "snippet": "持续刷到幕府将军的高评价，百思不得其解的一件事，三体被黑是有竞对，幕府将军实在找不到夸点，就一非常正常的旅游文化交流片。",
+      "snippet_highlighted_words": ["幕府将军", "评价", "幕府将军"],
+      "source": "微博"
+    }
+  ],
+  "related_searches": [
+    {
+      "block_position": 1,
+      "query": "幕府将军小说",
+      "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E5%B0%8F%E8%AF%B4&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Q1QJ6BAgtEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E5%B0%8F%E8%AF%B4"
+    },
+    {
+      "block_position": 1,
+      "query": "幕府将军知乎",
+      "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E7%9F%A5%E4%B9%8E&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Q1QJ6BAgrEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E7%9F%A5%E4%B9%8E"
+    },
+    {
+      "block_position": 1,
+      "query": "幕府将军 Netflix",
+      "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+Netflix&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Q1QJ6BAgqEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+Netflix"
+    },
+    {
+      "block_position": 1,
+      "query": "幕府将军在线",
+      "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E5%9C%A8%E7%BA%BF&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Q1QJ6BAgpEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E5%9C%A8%E7%BA%BF"
+    },
+    {
+      "block_position": 1,
+      "query": "幕府将军 原型",
+      "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E5%8E%9F%E5%9E%8B&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Q1QJ6BAgnEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E5%8E%9F%E5%9E%8B"
+    },
+    {
+      "block_position": 1,
+      "query": "幕府将军豆瓣",
+      "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E8%B1%86%E7%93%A3&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Q1QJ6BAgmEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E8%B1%86%E7%93%A3"
+    },
+    {
+      "block_position": 1,
+      "query": "幕府将军美剧",
+      "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E7%BE%8E%E5%89%A7&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Q1QJ6BAglEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B%E7%BE%8E%E5%89%A7"
+    },
+    {
+      "block_position": 1,
+      "query": "幕府将军 - 电影",
+      "link": "https://www.google.com/search?sca_esv=5718d00d1a5ada36&gl=cn&hl=zh-cn&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+-+%E7%94%B5%E5%BD%B1&sa=X&ved=2ahUKEwiNooHgiY2GAxV2SDABHfnkBM8Q1QJ6BAgkEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+-+%E7%94%B5%E5%BD%B1"
+    }
+  ],
+  "pagination": {
+    "current": 1,
+    "next": "https://www.google.com/search?q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&oq=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&hl=zh-cn&gl=cn&start=10&sourceid=chrome&ie=UTF-8",
+    "other_pages": {
+      "2": "https://www.google.com/search?q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&oq=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&hl=zh-cn&gl=cn&start=10&sourceid=chrome&ie=UTF-8",
+      "3": "https://www.google.com/search?q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&oq=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&hl=zh-cn&gl=cn&start=20&sourceid=chrome&ie=UTF-8",
+      "4": "https://www.google.com/search?q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&oq=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&hl=zh-cn&gl=cn&start=30&sourceid=chrome&ie=UTF-8",
+      "5": "https://www.google.com/search?q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&oq=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&hl=zh-cn&gl=cn&start=40&sourceid=chrome&ie=UTF-8"
+    }
+  },
+  "serpapi_pagination": {
+    "current": 1,
+    "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&start=10",
+    "next": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&start=10",
+    "other_pages": {
+      "2": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&start=10",
+      "3": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&start=20",
+      "4": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&start=30",
+      "5": "https://serpapi.com/search.json?device=desktop&engine=google&gl=cn&google_domain=google.com&hl=zh-cn&location=Beijing%2C+China&q=%E5%B9%95%E5%BA%9C%E5%B0%86%E5%86%9B+%E8%AF%84%E4%BB%B7&start=40"
+    }
+  }
+}
