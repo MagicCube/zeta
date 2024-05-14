@@ -7,7 +7,7 @@ export async function GET() {
     type: 'text',
     id: '669beed4-d14f-4cc1-b589-d6bf0d998647',
     role: 'user',
-    content: '计划单列市是什么？',
+    content: '幕府将军这部剧好看吗？',
   });
   return new EventStreamResponse(thread.run());
 }
