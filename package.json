@@ -23,6 +23,7 @@
     "next-auth": "^4.24.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "serpapi": "^2.1.0",
     "zod": "^3.23.3"
   },
   "devDependencies": {
