@@ -1,6 +1,7 @@
 import { type ChatCompletionChunk } from 'groq-sdk/lib/chat_completions_ext.mjs';
 
 import { type ChatCompletionMessage } from '~/shared/llm';
+import { applyPromptTemplate } from '~/shared/prompts/prompt-template';
 import {
   type ChunkMessage,
   type Thread,
@@ -132,10 +133,14 @@ export class ServerThread implements Thread {
   }
 
   private _buildMessages(): ChatCompletionMessage[] {
+    const prompt = applyPromptTemplate(SYSTEM_PROMPT, {
+      TIME: new Date(),
+      LOCATION: 'Beijing, Beijing, China',
+    });
     const messages: ChatCompletionMessage[] = [
       {
         role: 'system',
-        content: SYSTEM_PROMPT,
+        content: prompt,
       },
     ];
     const threadMessages = this.messages;
