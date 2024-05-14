@@ -7,7 +7,7 @@ export async function GET() {
     type: 'text',
     id: '669beed4-d14f-4cc1-b589-d6bf0d998647',
     role: 'user',
-    content: '幕府将军的男主角是谁',
+    content: '计划单列市是什么？',
   });
   return new EventStreamResponse(thread.run());
 }
