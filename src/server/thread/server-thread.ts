@@ -1,7 +1,3 @@
-import { type ChatCompletionChunk } from 'groq-sdk/lib/chat_completions_ext.mjs';
-
-import { type ChatCompletionMessage } from '~/shared/llm';
-import { applyPromptTemplate } from '~/shared/prompts/prompt-template';
 import {
   type ChunkMessage,
   type Thread,
@@ -9,16 +5,20 @@ import {
   type TextMessage,
   type ToolMessage,
   type UpdateMessage,
+  type DeltaMessage,
 } from '~/shared/thread';
-import { type MessageRole } from '~/shared/types';
-import { generateNanoId } from '~/shared/utils/nanoid';
+import { extractErrorMessage } from '~/shared/utils/error';
 
-// eslint-disable-next-line import/order
-import { createChatCompletionStream } from '../llm/create-chat-completion';
-
-// eslint-disable-next-line import/order
-import SYSTEM_PROMPT from '~/prompts/system-prompt.md';
+import { createChatCompletionStream } from '../llm';
 import { SearchTool } from '../tools';
+
+import {
+  convertThreadMessagesToChatCompletionMessages,
+  bufferChunks,
+  createToolMessage,
+  createTextMessage,
+  readChunksUntil,
+} from './utils';
 
 const TOOL_MESSAGE_PREFIX = '```tool\n';
 const TOOL_MESSAGE_POSTFIX = '\n```';
@@ -33,167 +33,107 @@ export class ServerThread implements Thread {
   }
 
   async *run(): AsyncGenerator<ChunkMessage> {
-    const messages = this._buildMessages();
+    const messages = convertThreadMessagesToChatCompletionMessages(
+      this.messages
+    );
     const { streamedChunks } = await createChatCompletionStream({
       messages,
     });
     const bufferedChunks = bufferChunks(streamedChunks, TOOL_MESSAGE_PREFIX);
     let newMessage: ThreadMessage | null = null;
-    const appendedMessages: ThreadMessage[] = [];
     for await (const chunk of bufferedChunks) {
       if (chunk === TOOL_MESSAGE_PREFIX) {
         // Tool message
-        const jsonRaw = await getToolContent(bufferedChunks);
-        if (jsonRaw) {
-          const json = JSON.parse(jsonRaw);
-          if (Array.isArray(json) && json.length > 1) {
-            const toolName = json[0];
-            const params = json.slice(1);
-            const newToolMessage: ToolMessage = {
-              id: generateNanoId(),
-              type: 'tool',
-              role: 'tool',
-              tool: {
-                toolName,
-                params,
-                state: 'running',
-                response: null,
-              },
-            };
-            newMessage = newToolMessage;
-            appendedMessages.push(newMessage);
-            // Yield new tool message.
-            yield newMessage;
+        const { toolName, params } = await readToolRequest(bufferedChunks);
+        const newToolMessage = createToolMessage(toolName, params);
+        newMessage = newToolMessage;
+        this.appendMessage(newMessage);
+        yield newMessage;
 
-            const tool = new SearchTool();
-            let toolUpdateMessage: UpdateMessage<ToolMessage> = {
-              id: newToolMessage.id,
-              type: 'update',
-              update: {
-                tool: { toolName, state: 'running', params },
-              },
-            };
-            yield toolUpdateMessage;
+        const tool = new SearchTool();
+        yield this._updateToolMessage(newToolMessage, 'running');
 
-            try {
-              const { response, content } = await tool.run(params);
-              toolUpdateMessage = {
-                id: newToolMessage.id,
-                type: 'update',
-                update: {
-                  tool: { toolName, state: 'done', params, response },
-                  content,
-                },
-              };
-              yield toolUpdateMessage;
-            } catch (e) {
-              toolUpdateMessage = {
-                id: newToolMessage.id,
-                type: 'update',
-                update: {
-                  tool: { toolName, state: 'error', params },
-                  content: `Error: ${
-                    e instanceof Error ? e.message : 'unknown error'
-                  }`,
-                },
-              };
-              yield toolUpdateMessage;
-              console.error(e);
-            }
-          }
-          break;
+        try {
+          const { response, content } = await tool.run(params);
+          yield this._updateToolMessage(
+            newToolMessage,
+            'done',
+            content,
+            response
+          );
+        } catch (e) {
+          console.error(e);
+          yield this._updateToolMessage(
+            newToolMessage,
+            'error',
+            extractErrorMessage(e)
+          );
         }
+        break;
       } else {
         // Text
         if (!newMessage) {
-          const newTextMessage: TextMessage = {
-            id: generateNanoId(),
-            type: 'text',
-            role: 'assistant',
-            content: chunk,
-          };
+          const newTextMessage = createTextMessage(chunk);
           newMessage = newTextMessage;
-          appendedMessages.push(newMessage);
-          // Yield new text message.
+          this.appendMessage(newMessage);
           yield newMessage;
         } else {
-          newMessage.content += chunk;
           // Yield delta chunk of text message.
-          yield {
-            id: newMessage.id,
-            type: 'delta',
-            delta: {
-              content: chunk,
-            },
-          };
+          yield this._updateTextMessage(newMessage, chunk);
         }
       }
     }
-    console.info(appendedMessages);
   }
 
-  private _buildMessages(): ChatCompletionMessage[] {
-    const prompt = applyPromptTemplate(SYSTEM_PROMPT, {
-      TIME: new Date(),
-      LOCATION: 'Beijing, Beijing, China',
-    });
-    const messages: ChatCompletionMessage[] = [
-      {
-        role: 'system',
-        content: prompt,
+  private _updateTextMessage(
+    message: TextMessage,
+    deltaContent: string
+  ): DeltaMessage {
+    message.content += deltaContent;
+    return {
+      id: message.id,
+      type: 'delta',
+      delta: {
+        content: deltaContent,
       },
-    ];
-    const threadMessages = this.messages;
-    for (const threadMessage of threadMessages) {
-      if (threadMessage.type === 'text') {
-        const role: MessageRole =
-          threadMessage.role === 'tool' ? 'user' : threadMessage.role;
-        messages.push({
-          role,
-          content: threadMessage.content,
-        });
-      }
-    }
-    return messages;
+    };
+  }
+
+  private _updateToolMessage<T>(
+    message: ToolMessage,
+    state: ToolMessage['state'],
+    content?: string,
+    response?: T
+  ): UpdateMessage<ToolMessage> {
+    message.state = state;
+    message.response = response;
+    return {
+      id: message.id,
+      type: 'update',
+      update: {
+        state,
+        content,
+        response,
+      },
+    };
   }
 }
 
-async function* bufferChunks(
-  chunks: AsyncIterable<ChatCompletionChunk>,
-  prefix: string
-): AsyncIterable<string> {
-  let buffer = '';
-  for await (const chunk of chunks) {
-    const content = chunk.choices[0]?.delta.content ?? '';
-    buffer += content;
-    while (buffer.length >= prefix.length) {
-      const index = buffer.indexOf(prefix);
-      if (index >= 0) {
-        // Found the string, yield the chunk up to and including the found string
-        yield buffer.substring(0, index + prefix.length);
-        // Remove the yielded part from the buffer
-        buffer = buffer.substring(index + prefix.length);
-      } else {
-        // Didn't find the string, yield the chunk up to the last possible start of the string
-        yield buffer.substring(0, buffer.length - prefix.length + 1);
-        // Remove the yielded part from the buffer
-        buffer = buffer.substring(buffer.length - prefix.length + 1);
-      }
+async function readToolRequest(chunks: AsyncIterable<string>): Promise<{
+  toolName: string;
+  params: string[];
+}> {
+  try {
+    const jsonRaw = await readChunksUntil(chunks, TOOL_MESSAGE_POSTFIX);
+    const json = JSON.parse(jsonRaw);
+    if (Array.isArray(json) && json.length > 1) {
+      return {
+        toolName: json[0],
+        params: json.slice(1),
+      };
     }
+  } catch (e) {
+    console.error(e);
   }
-  // Yield the remaining buffer
-  if (buffer.length > 0) {
-    yield buffer;
-  }
-}
-
-async function getToolContent(chunks: AsyncIterable<string>) {
-  let buffer = '';
-  for await (const chunk of chunks) {
-    buffer += chunk;
-    const pos = buffer.indexOf(TOOL_MESSAGE_POSTFIX);
-    if (pos !== -1) {
-      return buffer.substring(0, pos);
-    }
-  }
+  throw new Error('Unable to parse tool.');
 }
