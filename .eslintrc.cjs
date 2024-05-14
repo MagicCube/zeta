@@ -63,11 +63,11 @@ const config = {
             group: 'internal',
           },
           {
-            pattern: './**.css',
+            pattern: '**.css',
             group: 'object',
           },
           {
-            pattern: './**.md',
+            pattern: '**.md',
             group: 'object',
           },
         ],
