@@ -11,6 +11,8 @@ import {
 import { type MessageRole } from '~/shared/types';
 import { generateNanoId } from '~/shared/utils/nanoid';
 
+import { type ToolRequest } from '../tools';
+
 export function createTextMessage(content: string): TextMessage {
   return {
     id: generateNanoId(),
@@ -20,18 +22,18 @@ export function createTextMessage(content: string): TextMessage {
   };
 }
 
-export function createToolMessage(
-  toolName: string,
-  params: string[]
-): ToolMessage {
+export function createToolMessage({
+  toolName,
+  params,
+}: ToolRequest): ToolMessage {
   return {
     id: generateNanoId(),
     type: 'tool',
     role: 'tool',
     toolName,
     params,
-    state: 'init',
-    response: null,
+    state: 'running',
+    data: null,
   };
 }
 

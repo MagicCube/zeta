@@ -14,7 +14,7 @@ export class SearchTool implements Tool<SERPSearchResult> {
     });
     return {
       content: JSON.stringify(result, null, 2),
-      response: result,
+      data: result,
     };
   }
 }

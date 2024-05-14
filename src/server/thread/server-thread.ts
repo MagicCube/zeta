@@ -7,10 +7,9 @@ import {
   type UpdateMessage,
   type DeltaMessage,
 } from '~/shared/thread';
-import { extractErrorMessage } from '~/shared/utils/error';
 
 import { createChatCompletionStream } from '../llm';
-import { SearchTool } from '../tools';
+import { type ToolRequest, callTool, type ToolResponse } from '../tools';
 
 import {
   convertThreadMessagesToChatCompletionMessages,
@@ -40,46 +39,32 @@ export class ServerThread implements Thread {
       messages,
     });
     const bufferedChunks = bufferChunks(streamedChunks, TOOL_MESSAGE_PREFIX);
-    let newMessage: ThreadMessage | null = null;
+    let currentMessage: ThreadMessage | null = null;
+
+    const appendMessage = (message: ThreadMessage) => {
+      currentMessage = message;
+      this.appendMessage(currentMessage);
+      return currentMessage;
+    };
+
     for await (const chunk of bufferedChunks) {
       if (chunk === TOOL_MESSAGE_PREFIX) {
         // Tool message
-        const { toolName, params } = await readToolRequest(bufferedChunks);
-        const newToolMessage = createToolMessage(toolName, params);
-        newMessage = newToolMessage;
-        this.appendMessage(newMessage);
-        yield newMessage;
-
-        const tool = new SearchTool();
-        yield this._updateToolMessage(newToolMessage, 'running');
-
-        try {
-          const { response, content } = await tool.run(params);
-          yield this._updateToolMessage(
-            newToolMessage,
-            'done',
-            content,
-            response
-          );
-        } catch (e) {
-          console.error(e);
-          yield this._updateToolMessage(
-            newToolMessage,
-            'error',
-            extractErrorMessage(e)
-          );
-        }
+        const toolRequest = await readToolRequest(bufferedChunks);
+        yield appendMessage(createToolMessage(toolRequest));
+        // Run tool
+        const toolResponse = await callTool(toolRequest);
+        yield this._updateToolMessage(
+          currentMessage as unknown as ToolMessage,
+          toolResponse
+        );
         break;
       } else {
         // Text
-        if (!newMessage) {
-          const newTextMessage = createTextMessage(chunk);
-          newMessage = newTextMessage;
-          this.appendMessage(newMessage);
-          yield newMessage;
+        if (!currentMessage) {
+          yield appendMessage(createTextMessage(chunk));
         } else {
-          // Yield delta chunk of text message.
-          yield this._updateTextMessage(newMessage, chunk);
+          yield this._updateTextMessage(currentMessage, chunk);
         }
       }
     }
@@ -99,30 +84,22 @@ export class ServerThread implements Thread {
     };
   }
 
-  private _updateToolMessage<T>(
+  private _updateToolMessage(
     message: ToolMessage,
-    state: ToolMessage['state'],
-    content?: string,
-    response?: T
+    response: ToolResponse
   ): UpdateMessage<ToolMessage> {
-    message.state = state;
-    message.response = response;
+    Object.assign(message, response);
     return {
       id: message.id,
       type: 'update',
-      update: {
-        state,
-        content,
-        response,
-      },
+      update: response,
     };
   }
 }
 
-async function readToolRequest(chunks: AsyncIterable<string>): Promise<{
-  toolName: string;
-  params: string[];
-}> {
+async function readToolRequest(
+  chunks: AsyncIterable<string>
+): Promise<ToolRequest> {
   try {
     const jsonRaw = await readChunksUntil(chunks, TOOL_MESSAGE_POSTFIX);
     const json = JSON.parse(jsonRaw);

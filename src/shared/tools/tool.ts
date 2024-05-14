@@ -1,7 +1,8 @@
-export interface Tool<R = unknown> {
+export interface Tool<T = unknown> {
   readonly name: string;
+
   run(params: string[]): Promise<{
-    response: R;
+    data: T;
     content: string;
   }>;
 }
