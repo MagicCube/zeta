@@ -12,12 +12,23 @@ const state = proxy<ThreadStoreState>({
   activeThread: createThread(),
 });
 
-subscribe(state, () => {
-  console.log('Thread store updated:', JSON.parse(JSON.stringify(state)));
-});
+function setup() {
+  const jsonRaw = localStorage.getItem('zeta.threads.active');
+  if (jsonRaw) {
+    const json = JSON.parse(jsonRaw);
+    state.activeThread = proxy(new ClientThread(json));
+  }
+  subscribe(state, () => {
+    localStorage.setItem(
+      'zeta.threads.active',
+      JSON.stringify(state.activeThread)
+    );
+  });
+}
+setup();
 
 export function useActiveThread(): Thread {
-  return useSnapshot(state.activeThread) as ClientThread;
+  return useSnapshot(state).activeThread as ClientThread;
 }
 
 export function getActiveThread(): ClientThread {
@@ -27,4 +38,8 @@ export function getActiveThread(): ClientThread {
 export function createThread() {
   const thread = proxy(new ClientThread());
   return thread;
+}
+
+export function activateThread(thread: ClientThread) {
+  state.activeThread = thread;
 }
