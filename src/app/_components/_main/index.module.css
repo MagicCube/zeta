@@ -20,7 +20,6 @@
   flex-shrink: 0;
   min-width: 0;
   height: 10%;
-  padding: 0 var(--padding-xl);
   overflow-y: auto;
 }
 
@@ -30,6 +29,10 @@
   justify-content: center;
   flex-shrink: 0;
   padding: var(--padding-sm) var(--padding-xl);
+}
+
+.messageListView {
+  width: 100%;
 }
 
 .userInput {
