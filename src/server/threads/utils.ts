@@ -7,7 +7,7 @@ import {
   type ToolMessage,
   type TextMessage,
   type ThreadMessage,
-} from '~/shared/thread';
+} from '~/shared/threads';
 import { type MessageRole } from '~/shared/types';
 import { generateNanoId } from '~/shared/utils/nanoid';
 

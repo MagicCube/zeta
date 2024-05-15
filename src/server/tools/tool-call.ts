@@ -1,4 +1,4 @@
-import { type ToolMessage } from '~/shared/thread';
+import { type ToolMessage } from '~/shared/threads';
 import { extractErrorMessage } from '~/shared/utils/error';
 
 import { SearchTool } from '.';

@@ -6,7 +6,7 @@ import {
   type ToolMessage,
   type UpdateMessage,
   type DeltaMessage,
-} from '~/shared/thread';
+} from '~/shared/threads';
 
 import { createChatCompletionStream } from '../llm';
 import { type ToolRequest, callTool, type ToolResponse } from '../tools';

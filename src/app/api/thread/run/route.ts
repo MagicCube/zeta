@@ -1,5 +1,5 @@
 import { EventStreamResponse } from '~/server/streaming';
-import { ServerThread } from '~/server/thread/server-thread';
+import { ServerThread } from '~/server/threads';
 
 export async function GET() {
   const thread = new ServerThread('22a70f22-f307-43ec-9c73-a8f1164b34ed');
