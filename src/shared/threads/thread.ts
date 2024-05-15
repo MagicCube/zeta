@@ -2,7 +2,7 @@ import { type ThreadMessage } from './messages';
 
 export interface Thread {
   id: string;
-  running: boolean;
+  running?: boolean;
   createdTime: number;
   messages: ThreadMessage[];
 }
