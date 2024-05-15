@@ -27,7 +27,8 @@ export class ServerThread extends AbstractThread {
       yield* this._run();
       if (
         this.lastMessage?.type === 'tool' &&
-        this.lastMessage.state === 'done'
+        this.lastMessage.state === 'done' &&
+        this.lastMessage.content
       ) {
         yield* this._run();
       }
