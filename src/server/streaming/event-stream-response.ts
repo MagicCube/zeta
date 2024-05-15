@@ -1,5 +1,3 @@
-export const EVENT_STREAMING_DONE = '[DONE]';
-
 export class EventStreamResponse extends Response {
   constructor(asyncGenerator: AsyncGenerator<unknown>, init?: ResponseInit) {
     const stream = asyncIteratorToStream(asyncGenerator);
@@ -21,7 +19,6 @@ function asyncIteratorToStream(iterator: AsyncIterator<unknown>) {
     async pull(controller) {
       const { value, done } = await iterator.next();
       if (done) {
-        controller.enqueue(pack(EVENT_STREAMING_DONE, true));
         controller.close();
       } else {
         controller.enqueue(pack(value));
