@@ -20,7 +20,7 @@ export function convertThreadMessagesToChatCompletionMessages(
     },
   ];
   for (const threadMessage of threadMessages) {
-    if (threadMessage.type === 'text') {
+    if (threadMessage.content) {
       const role: MessageRole =
         threadMessage.role === 'tool' ? 'user' : threadMessage.role;
       results.push({
