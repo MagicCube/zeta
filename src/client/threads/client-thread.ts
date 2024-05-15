@@ -14,16 +14,21 @@ export class ClientThread extends AbstractThread {
   }
 
   protected async run() {
-    const events = fetchServerSentEvents('/api/threads/run', {
-      body: JSON.stringify(this.toJSON()),
-    });
-    for await (const event of events) {
-      if (event.type === 'message') {
-        const json = JSON.parse(event.data) as unknown as
-          | ThreadMessage
-          | ChunkMessage;
-        this._handleIncomingMessage(json);
+    this.running = true;
+    try {
+      const events = fetchServerSentEvents('/api/threads/run', {
+        body: JSON.stringify(this.toJSON()),
+      });
+      for await (const event of events) {
+        if (event.type === 'message') {
+          const json = JSON.parse(event.data) as unknown as
+            | ThreadMessage
+            | ChunkMessage;
+          this._handleIncomingMessage(json);
+        }
       }
+    } finally {
+      this.running = false;
     }
   }
 

@@ -32,7 +32,6 @@
   padding: var(--padding-sm) var(--padding-xl);
 }
 
-.input {
+.userInput {
   width: 100%;
-  border-radius: 16px !important;
 }

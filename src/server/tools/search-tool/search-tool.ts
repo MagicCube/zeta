@@ -1,6 +1,12 @@
 import { type Tool } from '~/shared/tools';
 
-import { type SERPSearchResult, serpSearch, mockSearch } from '../search/serp';
+import {
+  type SERPSearchResult,
+  serpSearch,
+  mockSearch,
+} from '../../search/serp';
+
+import { renderSearchResult } from './renderer';
 
 export class SearchTool implements Tool<SERPSearchResult> {
   readonly name = 'search';
@@ -19,7 +25,7 @@ export class SearchTool implements Tool<SERPSearchResult> {
       result = await mockSearch(searchRequest);
     }
     return {
-      content: JSON.stringify(result, null, 2),
+      content: renderSearchResult(result),
       data: result,
     };
   }

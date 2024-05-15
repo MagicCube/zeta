@@ -20,6 +20,14 @@ export class AbstractThread implements Thread {
     this.messages = messages;
   }
 
+  private _running = false;
+  get running() {
+    return this._running;
+  }
+  protected set running(value: boolean) {
+    this._running = value;
+  }
+
   get lastMessage() {
     return this.messages[this.messages.length - 1];
   }

@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+}
+
+.content {
+  white-space: pre-wrap;
+}

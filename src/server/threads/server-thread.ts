@@ -22,6 +22,7 @@ const TOOL_MESSAGE_POSTFIX = '\n```';
 
 export class ServerThread extends AbstractThread {
   async *run(): AsyncGenerator<ChunkMessage> {
+    this.running = true;
     const messages = convertThreadMessagesToChatCompletionMessages(
       this.messages
     );
@@ -58,6 +59,8 @@ export class ServerThread extends AbstractThread {
         }
       }
     }
+
+    this.running = false;
   }
 
   private _updateTextMessage(
