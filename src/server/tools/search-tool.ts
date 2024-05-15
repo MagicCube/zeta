@@ -1,12 +1,12 @@
 import { type Tool } from '~/shared/tools';
 
-import { type SERPSearchResult, serpSearch } from '../search/serp';
+import { type SERPSearchResult, serpSearch, mockSearch } from '../search/serp';
 
 export class SearchTool implements Tool<SERPSearchResult> {
   readonly name = 'search';
 
   async run(params: string[]) {
-    const result = await serpSearch({
+    const result = await mockSearch({
       q: params[0]!,
       country: 'cn',
       location: 'Beijing, Beijing, China',
