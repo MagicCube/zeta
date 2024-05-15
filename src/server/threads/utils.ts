@@ -3,39 +3,8 @@ import { type ChatCompletionChunk } from 'groq-sdk/lib/chat_completions_ext.mjs'
 import SYSTEM_PROMPT from '~/prompts/system-prompt.md';
 import { type ChatCompletionMessage } from '~/shared/llm';
 import { applyPromptTemplate } from '~/shared/prompts';
-import {
-  type ToolMessage,
-  type TextMessage,
-  type ThreadMessage,
-} from '~/shared/threads';
+import { type ThreadMessage } from '~/shared/threads';
 import { type MessageRole } from '~/shared/types';
-import { generateNanoId } from '~/shared/utils/nanoid';
-
-import { type ToolRequest } from '../tools';
-
-export function createTextMessage(content: string): TextMessage {
-  return {
-    id: generateNanoId(),
-    type: 'text',
-    role: 'assistant',
-    content,
-  };
-}
-
-export function createToolMessage({
-  toolName,
-  params,
-}: ToolRequest): ToolMessage {
-  return {
-    id: generateNanoId(),
-    type: 'tool',
-    role: 'tool',
-    toolName,
-    params,
-    state: 'running',
-    data: null,
-  };
-}
 
 export function convertThreadMessagesToChatCompletionMessages(
   threadMessages: ThreadMessage[]

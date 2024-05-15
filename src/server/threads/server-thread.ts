@@ -1,11 +1,11 @@
 import {
   type ChunkMessage,
-  type Thread,
   type ThreadMessage,
   type TextMessage,
   type ToolMessage,
   type UpdateMessage,
   type DeltaMessage,
+  AbstractThread,
 } from '~/shared/threads';
 
 import { createChatCompletionStream } from '../llm';
@@ -14,23 +14,13 @@ import { type ToolRequest, callTool, type ToolResponse } from '../tools';
 import {
   convertThreadMessagesToChatCompletionMessages,
   bufferChunks,
-  createToolMessage,
-  createTextMessage,
   readChunksUntil,
 } from './utils';
 
 const TOOL_MESSAGE_PREFIX = '```tool\n';
 const TOOL_MESSAGE_POSTFIX = '\n```';
 
-export class ServerThread implements Thread {
-  constructor(readonly id: string, readonly createdTime: number = Date.now()) {}
-
-  readonly messages: ThreadMessage[] = [];
-
-  appendMessage(message: ThreadMessage) {
-    this.messages.push(message);
-  }
-
+export class ServerThread extends AbstractThread {
   async *run(): AsyncGenerator<ChunkMessage> {
     const messages = convertThreadMessagesToChatCompletionMessages(
       this.messages
@@ -41,7 +31,7 @@ export class ServerThread implements Thread {
     const bufferedChunks = bufferChunks(streamedChunks, TOOL_MESSAGE_PREFIX);
     let currentMessage: ThreadMessage | null = null;
 
-    const appendMessage = (message: ThreadMessage) => {
+    const appendNewMessage = (message: ThreadMessage) => {
       currentMessage = message;
       this.appendMessage(currentMessage);
       return currentMessage;
@@ -51,7 +41,7 @@ export class ServerThread implements Thread {
       if (chunk === TOOL_MESSAGE_PREFIX) {
         // Tool message
         const toolRequest = await readToolRequest(bufferedChunks);
-        yield appendMessage(createToolMessage(toolRequest));
+        yield appendNewMessage(this.createToolMessage(toolRequest));
         // Run tool
         const toolResponse = await callTool(toolRequest);
         yield this._updateToolMessage(
@@ -62,7 +52,7 @@ export class ServerThread implements Thread {
       } else {
         // Text
         if (!currentMessage) {
-          yield appendMessage(createTextMessage(chunk));
+          yield appendNewMessage(this.createTextMessage(chunk, 'assistant'));
         } else {
           yield this._updateTextMessage(currentMessage, chunk);
         }
@@ -74,7 +64,7 @@ export class ServerThread implements Thread {
     message: TextMessage,
     deltaContent: string
   ): DeltaMessage {
-    message.content += deltaContent;
+    this.updateMessageWithDeltaContent(message.id, deltaContent);
     return {
       id: message.id,
       type: 'delta',
@@ -88,7 +78,7 @@ export class ServerThread implements Thread {
     message: ToolMessage,
     response: ToolResponse
   ): UpdateMessage<ToolMessage> {
-    Object.assign(message, response);
+    this.updateMessage(message.id, response);
     return {
       id: message.id,
       type: 'update',
