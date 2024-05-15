@@ -6,10 +6,14 @@ import styles from './index.module.css';
 
 export default function AppHeader({ className }: { className?: string }) {
   let env = '';
-  if (window.location.hostname === 'localhost') {
+  if (window.location.hostname === 'https://z.henry1943.top/') {
+    env = '';
+  } else if (window.location.hostname === 'localhost') {
     env = 'Local';
   } else if (window.location.hostname.startsWith('10.')) {
     env = 'Office';
+  } else {
+    env = 'Dev';
   }
   return (
     <div className={cn(styles.container, className)}>
