@@ -38,7 +38,7 @@ export async function mockSearch(
   return result as unknown as SERPSearchResult;
 }
 
-const apiKeys = process.env.SERP_API_KEYS!.split(',').map((i) => i.trim());
+const apiKeys = process.env.SERP_API_KEY!.split(',').map((i) => i.trim());
 function getAPIKey() {
   const apiKeyIndex = Math.round(Date.now() / 1000) % apiKeys.length;
   return apiKeys[apiKeyIndex];
