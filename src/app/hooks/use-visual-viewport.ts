@@ -20,14 +20,14 @@ export function useVisualViewport(): {
           top: scrollable.scrollHeight - scrollable.clientHeight,
           behavior: 'smooth',
         });
-      }, 0);
+      }, 100);
     }
   }, []);
   const handleTargetMouseDown = useCallback(() => {
     setInteractable(false);
     setTimeout(() => {
       setInteractable(true);
-    }, 0);
+    }, 100);
   }, []);
   const handleResize = useCallback(() => {
     const height = window.visualViewport?.height;
