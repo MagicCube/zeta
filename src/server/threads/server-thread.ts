@@ -1,6 +1,5 @@
-import CITATION_EXAMPLE from '~/prompts/citation-example.md';
-import SYSTEM_PROMPT from '~/prompts/system-prompt.md';
-import TOOL_EXAMPLES from '~/prompts/tool-examples.md';
+import PROMPT_STEP_1 from '~/prompts/step-1.md';
+import PROMPT_STEP_2 from '~/prompts/step-2.md';
 import { applyPromptTemplate } from '~/shared/prompts';
 import {
   type ChunkMessage,
@@ -28,10 +27,9 @@ export class ServerThread extends AbstractThread {
   async *run(): AsyncGenerator<ChunkMessage> {
     this.running = true;
     try {
-      let prompt = applyPromptTemplate(SYSTEM_PROMPT, {
+      let prompt = applyPromptTemplate(PROMPT_STEP_1, {
         TIME: new Date(),
         LOCATION: 'Beijing, Beijing, China',
-        EXAMPLES: TOOL_EXAMPLES,
       });
       yield* this._run(prompt);
       if (
@@ -39,10 +37,9 @@ export class ServerThread extends AbstractThread {
         this.lastMessage.state === 'done' &&
         this.lastMessage.content
       ) {
-        prompt = applyPromptTemplate(SYSTEM_PROMPT, {
+        prompt = applyPromptTemplate(PROMPT_STEP_2, {
           TIME: new Date(),
           LOCATION: 'Beijing, Beijing, China',
-          EXAMPLES: CITATION_EXAMPLE,
         });
         yield* this._run(prompt);
       }
