@@ -2,7 +2,7 @@
 
 import Textarea from '@mui/joy/Textarea';
 import cn from 'classnames';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import styles from './index.module.css';
 
@@ -16,6 +16,7 @@ export default function UserInput({
   onSubmit?: (value: string) => void;
 }) {
   const [value, setValue] = useState('');
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setValue(e.target.value);
@@ -35,10 +36,22 @@ export default function UserInput({
     },
     [value, disabled, onSubmit]
   );
+  const handleVisibilityChange = useCallback(() => {
+    if (document.visibilityState === 'hidden') {
+      inputRef.current?.blur();
+    }
+  }, []);
+  useEffect(() => {
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [handleVisibilityChange]);
   return (
     <div className={cn(styles.container, className)}>
       <Textarea
         className={styles.input}
+        slotProps={{ textarea: { ref: inputRef } }}
         placeholder="Message"
         value={value}
         onChange={handleChange}
