@@ -2,6 +2,33 @@
   display: flex;
 }
 
-.content {
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.message {
+  display: flex;
+  margin: 1rem 1rem;
+}
+
+.bubble {
+  display: flex;
   white-space: pre-wrap;
+  padding: var(--padding-sm) var(--padding-md);
+}
+
+.user.message {
+  justify-content: flex-end;
+
+  .bubble {
+    max-width: 80%;
+    background: var(--joy-palette-primary-500);
+    border-radius: 8px;
+    color: white;
+  }
 }

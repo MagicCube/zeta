@@ -15,11 +15,17 @@ export default function MessageListView({
 }) {
   return (
     <div className={cn(styles.container, className)}>
-      <ul>
-        {thread.messages.map((message, index) => (
-          <li key={index} className={styles.message}>
-            <div className={styles.role}>{message.role}</div>
-            <div className={styles.content}>{message.content}</div>
+      <ul className={styles.list}>
+        {thread.messages.map((message) => (
+          <li
+            key={message.id}
+            id={`message_${message.id}`}
+            className={cn(
+              message.role === 'user' && styles.user,
+              styles.message
+            )}
+          >
+            <div className={styles.bubble}>{message.content}</div>
           </li>
         ))}
       </ul>
