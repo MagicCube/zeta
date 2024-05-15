@@ -1,7 +1,7 @@
 'use client';
 
 import cn from 'classnames';
-import { useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { type Thread } from '~/shared/threads';
 
@@ -15,8 +15,27 @@ export default function MessageListView({
   thread: Thread;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const bottomAnchor = useRef<HTMLAnchorElement | null>(null);
+  const [autoScroll, setAutoScroll] = useState(true);
+  const handleTouchStart = useCallback(() => {
+    setAutoScroll(false);
+  }, []);
+  useEffect(() => {
+    if (thread.running) {
+      setAutoScroll(true);
+    }
+  }, [thread.running]);
+  useEffect(() => {
+    if (autoScroll && thread.running) {
+      bottomAnchor.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [thread.running, thread.messages, autoScroll]);
   return (
-    <div ref={containerRef} className={cn(styles.container, className)}>
+    <div
+      ref={containerRef}
+      className={cn(styles.container, className)}
+      onTouchStart={handleTouchStart}
+    >
       <ul className={styles.list}>
         {thread.messages.map((message) => (
           <li
@@ -31,6 +50,7 @@ export default function MessageListView({
           </li>
         ))}
       </ul>
+      <a ref={bottomAnchor}></a>
     </div>
   );
 }
