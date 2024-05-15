@@ -26,6 +26,7 @@ export const env = createEnv({
     GITHUB_CLIENT_SECRET: z.string(),
     GROQ_API_KEY: z.string(),
     SERP_API_KEY: z.string(),
+    DOUBAN_API_KEY: z.string(),
   },
 
   /**
@@ -50,6 +51,7 @@ export const env = createEnv({
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     GROQ_API_KEY: process.env.GROQ_API_KEY,
     SERP_API_KEY: process.env.SERP_API_KEY,
+    DOUBAN_API_KEY: process.env.DOUBAN_API_KEY,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
