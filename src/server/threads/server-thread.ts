@@ -23,6 +23,20 @@ const TOOL_MESSAGE_POSTFIX = '\n```';
 export class ServerThread extends AbstractThread {
   async *run(): AsyncGenerator<ChunkMessage> {
     this.running = true;
+    try {
+      yield* this._run();
+      if (
+        this.lastMessage?.type === 'tool' &&
+        this.lastMessage.state === 'done'
+      ) {
+        yield* this._run();
+      }
+    } finally {
+      this.running = false;
+    }
+  }
+
+  private async *_run(): AsyncGenerator<ChunkMessage> {
     const messages = convertThreadMessagesToChatCompletionMessages(
       this.messages
     );
@@ -59,8 +73,6 @@ export class ServerThread extends AbstractThread {
         }
       }
     }
-
-    this.running = false;
   }
 
   private _updateTextMessage(
