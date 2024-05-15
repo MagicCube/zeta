@@ -1,3 +1,7 @@
+import CITATION_EXAMPLE from '~/prompts/citation-example.md';
+import SYSTEM_PROMPT from '~/prompts/system-prompt.md';
+import TOOL_EXAMPLES from '~/prompts/tool-examples.md';
+import { applyPromptTemplate } from '~/shared/prompts';
 import {
   type ChunkMessage,
   type ThreadMessage,
@@ -24,21 +28,32 @@ export class ServerThread extends AbstractThread {
   async *run(): AsyncGenerator<ChunkMessage> {
     this.running = true;
     try {
-      yield* this._run();
+      let prompt = applyPromptTemplate(SYSTEM_PROMPT, {
+        TIME: new Date(),
+        LOCATION: 'Beijing, Beijing, China',
+        EXAMPLES: TOOL_EXAMPLES,
+      });
+      yield* this._run(prompt);
       if (
         this.lastMessage?.type === 'tool' &&
         this.lastMessage.state === 'done' &&
         this.lastMessage.content
       ) {
-        yield* this._run();
+        prompt = applyPromptTemplate(SYSTEM_PROMPT, {
+          TIME: new Date(),
+          LOCATION: 'Beijing, Beijing, China',
+          EXAMPLES: CITATION_EXAMPLE,
+        });
+        yield* this._run(prompt);
       }
     } finally {
       this.running = false;
     }
   }
 
-  private async *_run(): AsyncGenerator<ChunkMessage> {
+  private async *_run(systemPrompt: string): AsyncGenerator<ChunkMessage> {
     const messages = convertThreadMessagesToChatCompletionMessages(
+      systemPrompt,
       this.messages
     );
     const { streamedChunks } = await createChatCompletionStream({

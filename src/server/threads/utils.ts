@@ -1,22 +1,17 @@
 import { type ChatCompletionChunk } from 'groq-sdk/lib/chat_completions_ext.mjs';
 
-import SYSTEM_PROMPT from '~/prompts/system-prompt.md';
 import { type ChatCompletionMessage } from '~/shared/llm';
-import { applyPromptTemplate } from '~/shared/prompts';
 import { type ThreadMessage } from '~/shared/threads';
 import { type MessageRole } from '~/shared/types';
 
 export function convertThreadMessagesToChatCompletionMessages(
+  systemPrompt: string,
   threadMessages: ThreadMessage[]
 ): ChatCompletionMessage[] {
-  const prompt = applyPromptTemplate(SYSTEM_PROMPT, {
-    TIME: new Date(),
-    LOCATION: 'Beijing, Beijing, China',
-  });
   const results: ChatCompletionMessage[] = [
     {
       role: 'system',
-      content: prompt,
+      content: systemPrompt,
     },
   ];
   for (const threadMessage of threadMessages) {
