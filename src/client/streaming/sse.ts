@@ -48,9 +48,14 @@ function parseServerSentEvent(chunk: string) {
     data: '',
   };
   for (const line of chunk.split('\n')) {
-    const kv = line.split(': ');
-    if (kv.length === 2 && kv[0] === 'data') {
-      result.data = kv[1]!;
+    const pos = line.indexOf(': ');
+    if (pos === -1) {
+      continue;
+    }
+    const key = line.slice(0, pos);
+    const value = line.slice(pos + 2);
+    if (key === 'data') {
+      result.data = value;
     }
   }
   return result;
