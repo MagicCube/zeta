@@ -16,13 +16,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1,
-  width: 'device-width',
-  userScalable: false,
-  interactiveWidget: 'resizes-content',
   colorScheme: 'dark',
+  initialScale: 1,
+  interactiveWidget: 'resizes-content',
+  maximumScale: 1,
+  minimumScale: 1,
+  userScalable: false,
+  viewportFit: 'contain',
+  width: 'device-width',
 };
 
 export default function Page() {
