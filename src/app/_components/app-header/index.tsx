@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import styles from './index.module.css';
 
 let env = '';
-if (window.location.hostname === 'https://z.henry1943.top/') {
+if (window.location.hostname === 'z.henry1943.top') {
   env = '';
 } else if (window.location.hostname === 'localhost') {
   env = 'Local';
