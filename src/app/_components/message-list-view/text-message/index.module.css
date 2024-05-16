@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+}
+
+.container > div > p {
+  padding: 0;
+  margin: 0;
+}
