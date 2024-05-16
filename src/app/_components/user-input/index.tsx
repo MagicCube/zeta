@@ -51,7 +51,7 @@ export default function UserInput({
     <div className={cn(styles.container, className)}>
       <Textarea
         className={styles.input}
-        slotProps={{ textarea: { ref: inputRef } }}
+        slotProps={{ textarea: { ref: inputRef, enterKeyHint: 'send' } }}
         placeholder="Message"
         value={value}
         onChange={handleChange}
