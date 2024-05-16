@@ -3,7 +3,9 @@
 import cn from 'classnames';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { type Thread } from '~/shared/threads';
+import { type ThreadMessage, type Thread } from '~/shared/threads';
+
+import TextMessage from './text-message';
 
 import styles from './index.module.css';
 
@@ -46,11 +48,18 @@ export default function MessageListView({
               styles.message
             )}
           >
-            <div className={styles.bubble}>{message.content}</div>
+            <div className={styles.bubble}>{renderMessage(message)}</div>
           </li>
         ))}
       </ul>
       <a ref={bottomAnchor}></a>
     </div>
   );
+}
+
+function renderMessage(message: ThreadMessage) {
+  if (message.type === 'text') {
+    return <TextMessage message={message} />;
+  }
+  return null;
 }

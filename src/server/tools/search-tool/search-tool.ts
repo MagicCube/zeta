@@ -19,7 +19,7 @@ export class SearchTool implements Tool<SERPSearchResult> {
       locale: 'zh-cn',
     };
     let result: SERPSearchResult;
-    if (false) {
+    if (true) {
       result = await serpSearch(searchRequest);
     } else {
       result = await mockSearch(searchRequest);

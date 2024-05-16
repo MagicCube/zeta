@@ -72,6 +72,7 @@ export class ServerThread extends AbstractThread {
         yield appendNewMessage(this.createToolMessage(toolRequest));
         // Run tool
         const toolResponse = await callTool(toolRequest);
+        postProcessToolResponse(toolRequest, toolResponse);
         yield this._updateToolMessage(
           currentMessage as unknown as ToolMessage,
           toolResponse
@@ -131,4 +132,11 @@ async function readToolRequest(
     console.error(e);
   }
   throw new Error('Unable to parse tool.');
+}
+
+function postProcessToolResponse(_: ToolRequest, toolResponse: ToolResponse) {
+  if (toolResponse.content) {
+    toolResponse.content +=
+      '\n\n你的默认语言是简体中文，因此你必须的答案主体是中文的，除非用户要求使用其他的语言。';
+  }
 }
