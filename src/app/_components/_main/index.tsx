@@ -19,7 +19,7 @@ import UserInput from '../user-input';
 import styles from './index.module.css';
 
 export default function Main() {
-  const { scrollableRef, containerProps, targetProps } = useVisualViewport();
+  const { scrollableRef, containerProps } = useVisualViewport();
   const thread = useActiveThread();
   const handleUserInput = useCallback(async (value: string) => {
     const thread = getActiveThread();
@@ -43,7 +43,7 @@ export default function Main() {
       <main ref={scrollableRef} className={styles.main}>
         <MessageListView className={styles.messageListView} thread={thread} />
       </main>
-      <footer className={styles.footer} {...targetProps}>
+      <footer className={styles.footer}>
         <UserInput
           className={styles.userInput}
           disabled={thread.running}
