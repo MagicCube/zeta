@@ -1,7 +1,7 @@
 import { type SearchResponse, type SearchEntry, type SearchSubject } from '..';
 
 export function renderSearchResponse(res: SearchResponse) {
-  return `# Search Results
+  return `# Retrieval Results
 ${renderSubject(res.subject)}
 ${renderSearchResult(res.organicResults)}`;
 }
