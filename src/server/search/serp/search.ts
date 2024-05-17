@@ -2,8 +2,8 @@ import { getJson } from 'serpapi';
 
 import { sleep } from '~/shared/utils/sleep';
 
-import { type SERPSearchResult } from './types';
 import result from './search-result.json';
+import { type SERPSearchResult } from './types';
 
 export interface SERPSearchRequest {
   q: string;
