@@ -6,11 +6,11 @@
   right: 0;
   top: 0;
   bottom: 0;
-  padding-bottom: 28px;
+  padding-bottom: 32px;
+}
 
-  &:focus-within {
-    padding-bottom: 0;
-  }
+.container[data-keyboard='shown'] {
+  padding-bottom: 4px;
 }
 
 .header {
