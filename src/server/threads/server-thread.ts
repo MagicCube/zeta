@@ -137,6 +137,6 @@ async function readToolRequest(
 function postProcessToolResponse(_: ToolRequest, toolResponse: ToolResponse) {
   if (toolResponse.content) {
     toolResponse.content +=
-      '\n\n你的默认语言是简体中文，因此你必须的答案主体是中文的，除非用户要求使用其他的语言。';
+      '\n# Constraints\n- 你的默认语言是简体中文，因此你必须的答案主体是中文的，除非用户要求使用其他的语言。';
   }
 }
