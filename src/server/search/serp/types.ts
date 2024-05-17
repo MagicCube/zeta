@@ -4,8 +4,8 @@ export interface SERPSearchResult {
   search_information: SERPSearchInformation;
   organic_results: SERPOrganicResult[];
   top_stories?: SERPTopStory[];
-  knowledge_graph: SERPKnowledgeGraph;
-  answer_box: SERPAnswerBox;
+  knowledge_graph?: SERPKnowledgeGraph;
+  answer_box?: SERPAnswerBox;
   related_search: {
     query: string;
   };

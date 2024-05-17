@@ -2,7 +2,7 @@ import { getJson } from 'serpapi';
 
 import { sleep } from '~/shared/utils/sleep';
 
-import { type SERPSearchResult } from './search-result';
+import { type SERPSearchResult } from './types';
 import result from './search-result.json';
 
 export interface SERPSearchRequest {

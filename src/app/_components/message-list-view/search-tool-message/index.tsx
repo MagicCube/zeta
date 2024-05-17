@@ -2,7 +2,7 @@
 
 import cn from 'classnames';
 
-import { type SearchResult } from '~/server/tools';
+import { type SearchResponse, type SearchEntry } from '~/server/tools';
 import { type ToolMessage } from '~/shared/threads';
 
 import styles from './index.module.css';
@@ -14,13 +14,13 @@ export default function SearchToolMessage({
   className?: string;
   message: ToolMessage;
 }) {
-  const message = originalMessage as ToolMessage<{ results: SearchResult[] }>;
+  const message = originalMessage as ToolMessage<{ response: SearchResponse }>;
   let hint = '';
-  let results: SearchResult[] = [];
+  let results: SearchEntry[] = [];
   if (message.state === 'running') {
     hint = `正在为您搜索 "${message.params[0]}"...`;
   } else if (message.state === 'done' && message.data) {
-    results = message.data.results;
+    results = message.data.response.organicResults;
     hint = `为您搜索到了 ${results.length} 条线索`;
   }
   return (

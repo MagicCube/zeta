@@ -1,3 +1,4 @@
+import { searchMovies, type DoubanSubject } from '~/server/search/douban';
 import { type Tool } from '~/shared/tools';
 
 import {
@@ -8,7 +9,7 @@ import {
 
 import { renderSearchResult } from './renderer';
 
-export class SearchTool implements Tool<{ results: SearchResult[] }> {
+export class SearchTool implements Tool<{ response: SearchResponse }> {
   readonly name = 'search';
 
   async run(params: string[]) {
@@ -24,15 +25,21 @@ export class SearchTool implements Tool<{ results: SearchResult[] }> {
     } else {
       result = await mockSearch(searchRequest);
     }
-    const results = extractSearchResults(result);
+
+    const processedResult = await processResult(result);
     return {
-      content: renderSearchResult(results),
-      data: { results },
+      content: renderSearchResult(processedResult),
+      data: { response: processedResult },
     };
   }
 }
 
-export interface SearchResult {
+export interface SearchResponse {
+  subject?: SearchSubject;
+  organicResults: SearchEntry[];
+}
+
+export interface SearchEntry {
   title: string;
   description: string;
   link: string;
@@ -41,13 +48,33 @@ export interface SearchResult {
   faviconURL?: string;
 }
 
-export function extractSearchResults(result: SERPSearchResult): SearchResult[] {
-  const organicResults: SearchResult[] = result.organic_results.map((r) => ({
+export interface SearchSubject extends DoubanSubject {}
+
+export async function processResult(
+  result: SERPSearchResult
+): Promise<SearchResponse> {
+  let subject: SearchSubject | undefined;
+  const entityTypes = result.knowledge_graph?.entity_type.split(', ');
+  if (
+    entityTypes &&
+    (entityTypes.includes('tv') ||
+      entityTypes.includes('tvm') ||
+      entityTypes.includes('movie'))
+  ) {
+    const { subjects } = await searchMovies({
+      q: result.knowledge_graph!.title,
+      count: 1,
+    });
+    if (subjects) {
+      subject = subjects[0];
+    }
+  }
+  const organicResults: SearchEntry[] = result.organic_results.map((r) => ({
     title: r.title,
     description: r.snippet,
     link: r.link,
     source: r.source,
     faviconURL: r.favicon,
   }));
-  return [...organicResults];
+  return { subject, organicResults: organicResults };
 }
