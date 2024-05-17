@@ -39,9 +39,9 @@ export default function SearchToolMessage({
                   <img
                     className={styles.favicon}
                     src={result.faviconURL}
-                    alt=""
+                    alt={result.source}
                   />
-                  <span className={styles.source}>{result.source}</span>
+                  <span>{result.source}</span>
                 </div>
               </div>
             </a>

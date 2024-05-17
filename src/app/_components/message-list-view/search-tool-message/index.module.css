@@ -28,11 +28,12 @@
   flex-shrink: 0;
   flex-grow: 0;
   width: 144px;
-  height: 170px;
+  height: 154px;
   margin: 0;
   margin-left: var(--padding-xs);
   margin-right: var(--padding-xs);
   padding: var(--padding-sm);
+  padding-bottom: 0;
   border: 1px solid rgba(255, 255, 255, 0.33);
   border-radius: 8px;
   overflow: hidden;
@@ -64,9 +65,18 @@
     overflow: hidden;
   }
 
-  .footer {
-  }
-
   .source {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: var(--padding-xs);
+
+    .favicon {
+      display: flex;
+      width: 16px;
+      height: 16px;
+      margin-right: var(--padding-xs);
+      border-radius: 50%;
+    }
   }
 }
