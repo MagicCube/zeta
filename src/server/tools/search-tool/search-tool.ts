@@ -42,6 +42,7 @@ export interface SearchResponse {
 export interface SearchEntry {
   title: string;
   description: string;
+  date: string;
   link: string;
   source: string;
   imageURL?: string;
@@ -72,6 +73,7 @@ export async function processResult(
   const organicResults: SearchEntry[] = result.organic_results.map((r) => ({
     title: r.title,
     description: r.snippet,
+    date: r.date,
     link: r.link,
     source: r.source,
     faviconURL: r.favicon,

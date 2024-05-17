@@ -17,6 +17,9 @@ Casts: ${subject.casts.map((p) => p.name).join(' / ')}\n\n`;
 
 function renderSearchResult(results: SearchEntry[]) {
   return results
-    .map((result, i) => `## ${i + 1}. ${result.title}\n${result.description}`)
+    .map(
+      (result, i) =>
+        `## ${i + 1}. ${result.title}\n${result.date} — ${result.description}`
+    )
     .join('\n\n');
 }
