@@ -21,9 +21,7 @@ export class ClientThread extends AbstractThread {
       });
       for await (const event of events) {
         if (event.type === 'message') {
-          const json = JSON.parse(event.data) as unknown as
-            | ThreadMessage
-            | ChunkMessage;
+          const json = JSON.parse(event.data) as unknown as ChunkMessage;
           this._handleIncomingMessage(json);
         }
       }
@@ -32,7 +30,7 @@ export class ClientThread extends AbstractThread {
     }
   }
 
-  private _handleIncomingMessage(message: ThreadMessage | ChunkMessage) {
+  private _handleIncomingMessage(message: ChunkMessage) {
     if (message.type === 'text' || message.type === 'tool') {
       this.appendMessage(message);
     } else if (message.type === 'delta' && message.delta.content) {
