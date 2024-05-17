@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: small;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  flex-shrink: 0;
+  margin: 0 var(--padding-sm);
+  padding: var(--padding-xs) var(--padding-sm);
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  white-space: nowrap;
+}

@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative;
   padding: var(--padding-sm) var(--padding-xl);
 }
 
@@ -42,4 +43,12 @@
 
 .userInput {
   width: 100%;
+}
+
+.recommendationBar {
+  position: absolute;
+  top: -32px;
+  left: 0;
+  right: 0;
+  padding-left: var(--padding-lg);
 }

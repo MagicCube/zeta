@@ -14,6 +14,7 @@ import {
 import { useVisualViewport } from '../../hooks';
 import AppHeader from '../app-header';
 import MessageListView from '../message-list-view';
+import RecommendationBar from '../recommendation-bar';
 import UserInput from '../user-input';
 
 import styles from './index.module.css';
@@ -44,6 +45,12 @@ export default function Main() {
         <MessageListView className={styles.messageListView} thread={thread} />
       </main>
       <footer className={styles.footer}>
+        {thread.messages.length === 0 && (
+          <RecommendationBar
+            className={styles.recommendationBar}
+            onClick={handleUserInput}
+          />
+        )}
         <UserInput
           className={styles.userInput}
           disabled={thread.running}
