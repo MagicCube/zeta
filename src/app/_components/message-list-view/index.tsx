@@ -5,6 +5,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { type ThreadMessage, type Thread } from '~/shared/threads';
 
+import Logo from '../logo';
+
 import SearchToolMessage from './search-tool-message';
 import TextMessage from './text-message';
 
@@ -39,21 +41,32 @@ export default function MessageListView({
       className={cn(styles.container, className)}
       onTouchStart={handleTouchStart}
     >
-      <ul className={styles.list}>
-        {thread.messages.map((message) => (
-          <li
-            key={message.id}
-            id={`message_${message.id}`}
-            className={cn(
-              message.role === 'user' && styles.user,
-              styles.message
-            )}
-          >
-            <div className={styles.bubble}>{renderMessage(message)}</div>
-          </li>
-        ))}
-      </ul>
-      <a ref={bottomAnchor}></a>
+      {thread.messages.length ? (
+        <ul className={styles.list}>
+          {thread.messages.map((message) => (
+            <li
+              key={message.id}
+              id={`message_${message.id}`}
+              className={cn(
+                message.role === 'user' && styles.user,
+                styles.message
+              )}
+            >
+              <div className={styles.bubble}>{renderMessage(message)}</div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <Empty />
+      )}
+    </div>
+  );
+}
+
+function Empty() {
+  return (
+    <div className={styles.empty}>
+      <Logo className={styles.logo} />
     </div>
   );
 }
