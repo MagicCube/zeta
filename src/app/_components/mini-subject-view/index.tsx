@@ -20,11 +20,9 @@ export default function MiniSubjectView({
       target="_blank"
     >
       <div className={styles.left}>
-        <img
+        <div
           className={styles.image}
-          src={subject.images.medium}
-          alt=""
-          referrerPolicy="no-referrer"
+          style={{ backgroundImage: `url(${proxyURL(subject.images.medium)})` }}
         />
       </div>
       <main className={styles.main}>
@@ -71,4 +69,10 @@ function Rating({ value }: { value: string }) {
       ))}
     </div>
   );
+}
+
+function proxyURL(url: string) {
+  const result = new URL('/api/proxy', window.location.href);
+  result.searchParams.set('url', url);
+  return result.toString();
 }
