@@ -29,6 +29,5 @@ function processContent(content: string | null | undefined): string | null {
   }
   // Replace `[##${number}]` with `[{number}](##${number})`
   content = content.replace(/\[##(\d+)]/g, '[[$1]](##$1)');
-  console.info(content);
   return content;
 }

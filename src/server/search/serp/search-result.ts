@@ -3,6 +3,7 @@ export interface SERPSearchResult {
   search_parameters: SERPSearchParameters;
   search_information: SERPSearchInformation;
   organic_results: SERPOrganicResult[];
+  top_stories?: SERPTopStory[];
   knowledge_graph: SERPKnowledgeGraph;
   answer_box: SERPAnswerBox;
   related_search: {
@@ -30,13 +31,21 @@ export interface SERPSearchParameters {
 }
 
 export interface SERPOrganicResult {
-  position: number;
   title: string;
   link: string;
   favicon: string;
   date: string;
   snippet: string;
   source: string;
+}
+
+export interface SERPTopStory {
+  title: string;
+  link: string;
+  source: string;
+  date: string;
+  snippet: string;
+  thumbnail: string;
 }
 
 export interface SERPSearchInformation {

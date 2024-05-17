@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { type ThreadMessage, type Thread } from '~/shared/threads';
 
+import SearchToolMessage from './search-tool-message';
 import TextMessage from './text-message';
 
 import styles from './index.module.css';
@@ -60,6 +61,10 @@ export default function MessageListView({
 function renderMessage(message: ThreadMessage) {
   if (message.type === 'text') {
     return <TextMessage message={message} />;
+  } else if (message.type === 'tool') {
+    if (message.toolName === 'search') {
+      return <SearchToolMessage message={message} />;
+    }
   }
   return null;
 }

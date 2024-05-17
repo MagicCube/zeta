@@ -16,13 +16,13 @@
 
 .message {
   display: flex;
-  margin: 1rem 1rem;
+  margin: var(--padding-sm) var(--padding-lg);
 }
 
 .bubble {
   display: flex;
   white-space: pre-wrap;
-  padding: var(--padding-sm) var(--padding-md);
+  padding: var(--padding-sm);
 }
 
 .user.message {
@@ -33,5 +33,11 @@
     background: var(--joy-palette-primary-500);
     border-radius: 8px;
     color: white;
+  }
+}
+
+.message:not(.user) {
+  .bubble {
+    width: 100%;
   }
 }
