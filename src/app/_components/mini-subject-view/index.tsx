@@ -14,10 +14,7 @@ export default function MiniSubjectView({
   subject: SearchSubject;
 }) {
   return (
-    <a
-      className={cn(styles.container, className)}
-      href={`https://m.douban.com/movie/subject/${subject.id}/`}
-    >
+    <a className={cn(styles.container, className)} href={subject.alt}>
       <div className={styles.left}>
         <div
           className={styles.image}
