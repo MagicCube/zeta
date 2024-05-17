@@ -35,7 +35,10 @@
 }
 
 .image {
-  width: 100%;
+  width: 80px;
+  height: 108px;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 8px;
 }
 
