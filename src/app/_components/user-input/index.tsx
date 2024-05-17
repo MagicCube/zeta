@@ -52,7 +52,7 @@ export default function UserInput({
       <Textarea
         className={styles.input}
         slotProps={{ textarea: { ref: inputRef, enterKeyHint: 'send' } }}
-        placeholder="Message"
+        placeholder="今天你想了解什么？"
         value={value}
         onChange={handleChange}
         onKeyDown={handleKeydown}
