@@ -7,7 +7,7 @@ import {
   mockSearch,
 } from '../../search/serp';
 
-import { renderSearchResponse } from './renderer';
+import { formatSearchResponse } from './format';
 
 export class SearchTool implements Tool<{ response: SearchResponse }> {
   readonly name = 'search';
@@ -28,7 +28,7 @@ export class SearchTool implements Tool<{ response: SearchResponse }> {
 
     const processedResult = await processResult(result);
     return {
-      content: renderSearchResponse(processedResult),
+      content: formatSearchResponse(processedResult),
       data: { response: processedResult },
     };
   }

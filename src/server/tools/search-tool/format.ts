@@ -1,12 +1,12 @@
 import { type SearchResponse, type SearchEntry, type SearchSubject } from '..';
 
-export function renderSearchResponse(res: SearchResponse) {
+export function formatSearchResponse(res: SearchResponse) {
   return `# Retrieved Results
-${renderSubject(res.subject)}
-${renderSearchResult(res.organicResults)}`;
+${formatSubject(res.subject)}
+${formatSearchResult(res.organicResults)}`;
 }
 
-export function renderSubject(subject?: SearchSubject) {
+export function formatSubject(subject?: SearchSubject) {
   if (!subject) return '';
   return `## ${subject.title} (${subject.year})
 Douban Rating: ${subject.rating.average} of 10
@@ -15,7 +15,7 @@ Directors: ${subject.directors.map((p) => p.name).join(' / ')}
 Casts: ${subject.casts.map((p) => p.name).join(' / ')}\n`;
 }
 
-function renderSearchResult(results: SearchEntry[]) {
+function formatSearchResult(results: SearchEntry[]) {
   return results
     .map(
       (result, i) =>
