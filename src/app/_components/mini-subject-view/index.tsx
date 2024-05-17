@@ -17,7 +17,6 @@ export default function MiniSubjectView({
     <a
       className={cn(styles.container, className)}
       href={`https://m.douban.com/movie/subject/${subject.id}/`}
-      target="_blank"
     >
       <div className={styles.left}>
         <div

@@ -34,7 +34,7 @@ export default function SearchToolMessage({
         <ul className={styles.resultList}>
           {response?.organicResults.map((result, i) => (
             <li key={result.link} className={styles.result}>
-              <a className={styles.link} target="_blank" href={result.link}>
+              <a className={styles.link} href={result.link}>
                 <div className={styles.title}>
                   {i + 1}. {result.title}
                 </div>
