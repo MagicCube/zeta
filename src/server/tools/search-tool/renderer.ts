@@ -1,8 +1,22 @@
-import { type SearchResponse } from '..';
+import { type SearchResponse, type SearchEntry, type SearchSubject } from '..';
 
-export function renderSearchResult(results: SearchResponse) {
-  return `# Organic Results
-${results.organicResults
-  .map((result, i) => `## ${i + 1}. ${result.title}\n${result.description}`)
-  .join('\n\n')}`;
+export function renderSearchResponse(res: SearchResponse) {
+  return `# Search Results
+${renderSubject(res.subject)}
+${renderSearchResult(res.organicResults)}`;
+}
+
+export function renderSubject(subject?: SearchSubject) {
+  if (!subject) return '';
+  return `## 0. ${subject.title} (${subject.year})
+Douban Rating: ${subject.rating.average} of 10
+Genres: ${subject.genres.join(' / ')}
+Directors: ${subject.directors.map((p) => p.name).join(' / ')}
+Casts: ${subject.casts.map((p) => p.name).join(' / ')}\n\n`;
+}
+
+function renderSearchResult(results: SearchEntry[]) {
+  return results
+    .map((result, i) => `## ${i + 1}. ${result.title}\n${result.description}`)
+    .join('\n\n');
 }
