@@ -8,11 +8,11 @@ ${renderSearchResult(res.organicResults)}`;
 
 export function renderSubject(subject?: SearchSubject) {
   if (!subject) return '';
-  return `## 0. ${subject.title} (${subject.year})
+  return `## ${subject.title} (${subject.year})
 Douban Rating: ${subject.rating.average} of 10
 Genres: ${subject.genres.join(' / ')}
 Directors: ${subject.directors.map((p) => p.name).join(' / ')}
-Casts: ${subject.casts.map((p) => p.name).join(' / ')}\n\n`;
+Casts: ${subject.casts.map((p) => p.name).join(' / ')}\n`;
 }
 
 function renderSearchResult(results: SearchEntry[]) {
