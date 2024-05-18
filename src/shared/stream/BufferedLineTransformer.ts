@@ -6,10 +6,13 @@ export class BufferedLineTransformer implements Transformer<string, string> {
 
   constructor(readonly lineBufferSize: number) {}
 
-  transform(chunk: string, controller: TransformStreamDefaultController<string>) {
+  transform(
+    chunk: string,
+    controller: TransformStreamDefaultController<string>
+  ) {
     this.buffer += chunk;
     const lines = this.buffer.split('\n');
-    let lastLine = lines.pop()!;
+    const lastLine = lines.pop()!;
     if (lastLine.length < this.lineBufferSize) {
       this.buffer = lastLine;
     } else {
