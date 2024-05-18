@@ -3,6 +3,9 @@ import { extractErrorMessage } from '~/shared/utils/error';
 
 import { SearchTool } from '.';
 
+export const TOOL_MESSAGE_PREFIX = '```tool';
+export const TOOL_MESSAGE_POSTFIX = '```';
+
 export interface ToolRequest {
   toolName: string;
   params: string[];
@@ -32,4 +35,20 @@ export async function callTool({
   } catch (e) {
     return { state: 'error', content: extractErrorMessage(e) };
   }
+}
+
+export function parseToolRequest(block: string): ToolRequest {
+  const rawJSON = block.slice(
+    TOOL_MESSAGE_PREFIX.length,
+    block.length - TOOL_MESSAGE_POSTFIX.length
+  );
+  const json = JSON.parse(rawJSON) as ToolRequest;
+  if (Array.isArray(json) && json.length >= 1) {
+    const [toolName, ...params] = json;
+    return {
+      toolName,
+      params,
+    };
+  }
+  throw new Error('Invalid tool request');
 }

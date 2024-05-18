@@ -4,4 +4,4 @@ import { type ToolMessage } from './tool-message';
 import { type UpdateMessage } from './update-message';
 
 export type ThreadMessage = TextMessage | ToolMessage;
-export type ChunkMessage = DeltaMessage | UpdateMessage | ThreadMessage;
+export type EventMessage = DeltaMessage | UpdateMessage | ThreadMessage;

@@ -2,7 +2,12 @@ import PROMPT_STEP_1 from '~/prompts/step-1.md';
 import PROMPT_STEP_2 from '~/prompts/step-2.md';
 import { applyPromptTemplate } from '~/shared/prompts';
 import {
-  type ChunkMessage,
+  BufferedBlockTransformer,
+  BufferedLineTransformer,
+  convertStreamToAsyncGenerator,
+} from '~/shared/stream';
+import {
+  type EventMessage,
   type ThreadMessage,
   type TextMessage,
   type ToolMessage,
@@ -12,19 +17,19 @@ import {
 } from '~/shared/threads';
 
 import { createChatCompletionStream } from '../llm';
-import { type ToolRequest, callTool, type ToolResponse } from '../tools';
-
 import {
-  convertThreadMessagesToChatCompletionMessages,
-  bufferChunks,
-  readChunksUntil,
-} from './utils';
+  type ToolRequest,
+  callTool,
+  type ToolResponse,
+  TOOL_MESSAGE_POSTFIX,
+  TOOL_MESSAGE_PREFIX,
+  parseToolRequest,
+} from '../tools';
 
-const TOOL_MESSAGE_PREFIX = '```tool\n';
-const TOOL_MESSAGE_POSTFIX = '\n```';
+import { convertThreadMessagesToChatCompletionMessages } from './utils';
 
 export class ServerThread extends AbstractThread {
-  async *run(): AsyncGenerator<ChunkMessage> {
+  async *run(): AsyncGenerator<EventMessage> {
     this.running = true;
     try {
       let prompt = applyPromptTemplate(PROMPT_STEP_1, {
@@ -48,27 +53,29 @@ export class ServerThread extends AbstractThread {
     }
   }
 
-  private async *_run(systemPrompt: string): AsyncGenerator<ChunkMessage> {
+  private async *_run(systemPrompt: string): AsyncGenerator<EventMessage> {
     const messages = convertThreadMessagesToChatCompletionMessages(
       systemPrompt,
       this.messages
     );
-    const { streamedChunks } = await createChatCompletionStream({
+    const { stream } = await createChatCompletionStream({
       messages,
     });
-    const bufferedChunks = bufferChunks(streamedChunks, TOOL_MESSAGE_PREFIX);
+    const transformedStream = transformStream(stream);
+    const generator = convertStreamToAsyncGenerator(transformedStream);
     let currentMessage: ThreadMessage | null = null;
-
     const appendNewMessage = (message: ThreadMessage) => {
       currentMessage = message;
       this.appendMessage(currentMessage);
       return currentMessage;
     };
-
-    for await (const chunk of bufferedChunks) {
-      if (chunk === TOOL_MESSAGE_PREFIX) {
-        // Tool message
-        const toolRequest = await readToolRequest(bufferedChunks);
+    for await (const chunk of generator) {
+      if (
+        chunk.startsWith(TOOL_MESSAGE_PREFIX) &&
+        chunk.endsWith(TOOL_MESSAGE_POSTFIX)
+      ) {
+        // Tool
+        const toolRequest = parseToolRequest(chunk);
         yield appendNewMessage(this.createToolMessage(toolRequest));
         // Run tool
         const toolResponse = await callTool(toolRequest);
@@ -116,22 +123,18 @@ export class ServerThread extends AbstractThread {
   }
 }
 
-async function readToolRequest(
-  chunks: AsyncIterable<string>
-): Promise<ToolRequest> {
-  try {
-    const jsonRaw = await readChunksUntil(chunks, TOOL_MESSAGE_POSTFIX);
-    const json = JSON.parse(jsonRaw);
-    if (Array.isArray(json) && json.length > 1) {
-      return {
-        toolName: json[0],
-        params: json.slice(1),
-      };
-    }
-  } catch (e) {
-    console.error(e);
-  }
-  throw new Error('Unable to parse tool.');
+function transformStream(stream: ReadableStream) {
+  return stream
+    .pipeThrough(
+      new TransformStream(
+        new BufferedLineTransformer(TOOL_MESSAGE_PREFIX.length)
+      )
+    )
+    .pipeThrough(
+      new TransformStream(
+        new BufferedBlockTransformer(TOOL_MESSAGE_PREFIX, TOOL_MESSAGE_POSTFIX)
+      )
+    );
 }
 
 function postProcessToolResponse(_: ToolRequest, toolResponse: ToolResponse) {

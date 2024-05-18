@@ -15,7 +15,7 @@ export async function createChatCompletionStream(
   req: Partial<ChatCompletionRequest>
 ): Promise<{
   controller: AbortController;
-  streamedChunks: AsyncIterable<ChatCompletionChunk>;
+  stream: ReadableStream<string>;
 }> {
   const normalizeReq = normalizeChatCompletionRequest(req);
   const streamResponse = await groq.chat.completions.create({
@@ -24,7 +24,7 @@ export async function createChatCompletionStream(
   });
   return {
     controller: streamResponse.controller,
-    streamedChunks: streamResponse,
+    stream: convertChunksToStream(streamResponse),
   };
 }
 
@@ -39,4 +39,19 @@ function normalizeChatCompletionRequest(
     seed: req.seed ?? 0,
     messages: req.messages ?? [],
   };
+}
+
+function convertChunksToStream(
+  streamedChunks: AsyncIterable<ChatCompletionChunk>
+): ReadableStream<string> {
+  return new ReadableStream({
+    async start(controller) {
+      for await (const chunk of streamedChunks) {
+        if (chunk.choices[0]?.delta.content) {
+          controller.enqueue(chunk.choices[0]?.delta.content);
+        }
+      }
+      controller.close();
+    },
+  });
 }

@@ -1,6 +1,6 @@
 import {
   AbstractThread,
-  type ChunkMessage,
+  type EventMessage,
   type ThreadMessage,
 } from '~/shared/threads';
 
@@ -21,7 +21,7 @@ export class ClientThread extends AbstractThread {
       });
       for await (const event of events) {
         if (event.type === 'message') {
-          const json = JSON.parse(event.data) as unknown as ChunkMessage;
+          const json = JSON.parse(event.data) as unknown as EventMessage;
           this._handleIncomingMessage(json);
         }
       }
@@ -30,7 +30,7 @@ export class ClientThread extends AbstractThread {
     }
   }
 
-  private _handleIncomingMessage(message: ChunkMessage) {
+  private _handleIncomingMessage(message: EventMessage) {
     if (message.type === 'text' || message.type === 'tool') {
       this.appendMessage(message);
     } else if (message.type === 'delta' && message.delta.content) {
