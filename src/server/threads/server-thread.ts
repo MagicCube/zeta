@@ -1,9 +1,9 @@
 import PROMPT_STEP_1 from '~/prompts/step-1.md';
 import PROMPT_STEP_2 from '~/prompts/step-2.md';
 import { applyPromptTemplate } from '~/shared/prompts';
-import { BufferedBlockTransformer } from '~/shared/stream/BufferedBlockTransformer';
-import { BufferedLineTransformer } from '~/shared/stream/BufferedLineTransformer';
-import { convertStreamToAsyncGenerator } from '~/shared/stream/convert-stream-to-generator';
+import { convertStreamToAsyncGenerator } from '~/shared/streaming/convert-stream-to-generator';
+import { BufferedBlockTransformer } from '~/shared/streaming/transformers/BufferedBlockTransformer';
+import { BufferedLineTransformer } from '~/shared/streaming/transformers/BufferedLineTransformer';
 import {
   type EventMessage,
   type ThreadMessage,

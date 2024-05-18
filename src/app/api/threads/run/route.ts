@@ -1,6 +1,6 @@
 import { type NextRequest } from 'next/server';
 
-import { EventStreamResponse } from '~/server/streaming';
+import { EventStreamResponse } from '~/server/sse';
 import { ServerThread } from '~/server/threads';
 import { type Thread } from '~/shared/threads';
 

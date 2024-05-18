@@ -4,7 +4,7 @@ import {
   type ThreadMessage,
 } from '~/shared/threads';
 
-import { fetchServerSentEvents } from '../streaming';
+import { fetchStreamEvents } from '../sse';
 
 export class ClientThread extends AbstractThread {
   async sendMessage(content: string) {
@@ -16,7 +16,7 @@ export class ClientThread extends AbstractThread {
   protected async run() {
     this.running = true;
     try {
-      const events = fetchServerSentEvents('/api/threads/run', {
+      const events = fetchStreamEvents('/api/threads/run', {
         body: JSON.stringify(this.toJSON()),
       });
       for await (const event of events) {

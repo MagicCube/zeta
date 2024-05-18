@@ -1,12 +1,12 @@
-export interface ServerSentEvent {
+export interface StreamEvent {
   type: 'message';
   data: string;
 }
 
-export async function* fetchServerSentEvents(
+export async function* fetchStreamEvents(
   url: string,
   init: RequestInit
-): AsyncIterable<ServerSentEvent> {
+): AsyncIterable<StreamEvent> {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -39,13 +39,13 @@ export async function* fetchServerSentEvents(
       }
       const chunk = buffer.slice(0, index);
       buffer = buffer.slice(index + 2);
-      yield parseServerSentEvent(chunk);
+      yield parseEvent(chunk);
     }
   }
 }
 
-function parseServerSentEvent(chunk: string) {
-  const result: ServerSentEvent = {
+function parseEvent(chunk: string) {
+  const result: StreamEvent = {
     type: 'message',
     data: '',
   };
