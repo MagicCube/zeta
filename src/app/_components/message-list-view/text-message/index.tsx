@@ -14,6 +14,7 @@ export default function TextMessage({
 }: {
   className?: string;
   message: ThreadMessage;
+  running?: boolean;
 }) {
   const content = processContent(message.content);
   return (

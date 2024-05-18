@@ -52,7 +52,9 @@ export default function MessageListView({
                 styles.message
               )}
             >
-              <div className={styles.bubble}>{renderMessage(message)}</div>
+              <div className={styles.bubble}>
+                {renderMessage(message, thread)}
+              </div>
             </li>
           ))}
         </ul>
@@ -71,9 +73,13 @@ function Empty() {
   );
 }
 
-function renderMessage(message: ThreadMessage) {
+function renderMessage(message: ThreadMessage, thread: Thread) {
+  const running =
+    (message.role === 'assistant' || message.role === 'tool') &&
+    thread.running &&
+    message.id === thread.messages[thread.messages.length - 1]?.id;
   if (message.type === 'text') {
-    return <TextMessage message={message} />;
+    return <TextMessage message={message} running={running} />;
   } else if (message.type === 'tool') {
     if (message.toolName === 'search') {
       return <SearchToolMessage message={message} />;
