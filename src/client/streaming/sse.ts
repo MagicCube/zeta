@@ -19,7 +19,9 @@ export async function* fetchServerSentEvents(
     throw new Error(`Failed to fetch from ${url}: ${response.status}`);
   }
   // Read from response body, event by event. An event always ends with a '\n\n'.
-  const reader = response.body?.getReader();
+  const reader = response.body
+    ?.pipeThrough(new TextDecoderStream())
+    .getReader();
   if (!reader) {
     throw new Error('Response body is not readable');
   }
@@ -29,7 +31,7 @@ export async function* fetchServerSentEvents(
     if (done) {
       break;
     }
-    buffer += new TextDecoder().decode(value);
+    buffer += value;
     while (true) {
       const index = buffer.indexOf('\n\n');
       if (index === -1) {
