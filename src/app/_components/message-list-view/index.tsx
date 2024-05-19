@@ -20,7 +20,6 @@ export default function MessageListView({
   thread: Thread;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const bottomAnchor = useRef<HTMLAnchorElement | null>(null);
   const [autoScroll, setAutoScroll] = useState(true);
   const handleTouchStart = useCallback(() => {
     setAutoScroll(false);
@@ -32,7 +31,7 @@ export default function MessageListView({
   }, [thread.running]);
   useEffect(() => {
     if (autoScroll && thread.running) {
-      bottomAnchor.current?.scrollIntoView({ behavior: 'smooth' });
+      // TODO: Scroll
     }
   }, [thread.running, thread.messages, autoScroll]);
   return (
